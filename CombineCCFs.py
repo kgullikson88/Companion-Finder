@@ -28,6 +28,13 @@ def get_rv_correction(filename):
     #return (date[5])*units.m.to(units.km)
 
 
+def get_prim_rv(filename):
+    header = fits.getheader(filename)
+    jd = header['HJD']
+    date = BARY_DF.ix[np.argmin(abs(BARY_DF[0]-jd))]
+    return date[2]*units.m.to(units.km)
+
+
 def get_centroid(x, y):
     return np.sum(x*y) / np.sum(y)
 
@@ -95,56 +102,6 @@ def get_ccfs(T=4000, vsini=5, logg=4.5, metal=0.5, hdf_file='Cross_correlations/
     return np.array(ccfs), filenames
 
 
-def get_rv(fileList, get_helcorr=False):
-    # Read in the rv data
-    bjd, rv = np.loadtxt("psi1draa_100_120_mcomb1.dat", usecols=(0,1), unpack=True)
-
-    rv_shifts = []
-    for fname in fileList:
-        fitsfile = fname.split("/")[-1].split(".")[0] + ".fits"
-        header = fits.getheader(fitsfile)
-        t = time.Time(header['date'], format='isot', scale='utc')
-        idx = np.argmin(abs(bjd - t.jd))
-        vel = GenericSearch.HelCorr(header, observatory="McDonald")*1e3 if get_helcorr else rv[idx]
-        rv_shifts.append(vel)
-
-    return rv_shifts
-
-
-def get_shifted_ccfs(rv_list, ccfs, xgrid):
-    shift_ccfs = ccfs.copy()
-    for i, (rv, corr, scorr) in enumerate(zip(rv_list, ccfs, shift_ccfs)):
-        fcn = spline(xgrid, corr)
-        scorr = fcn(xgrid + rv*1e-3 * (q - 1.0)/q)
-        scorr[scorr < 0] = 0
-        scorr[scorr > 0.3] = 0.3
-        shift_ccfs[i] =scorr
-    return shift_ccfs
-
-def bary_correct_ccfs(rv_list, ccfs, xgrid):
-    shift_ccfs = ccfs.copy()
-    for i, (rv, corr, scorr) in enumerate(zip(rv_list, ccfs, shift_ccfs)):
-        fcn = spline(xgrid, corr)
-        scorr = fcn(xgrid - rv*1e-3)
-        shift_ccfs[i] =scorr
-    return shift_ccfs
-
-
-def fit_q_old(rv1, rv2):
-    model_fcn = lambda x,a,b: a*x + b
-    fitter = Model(model_fcn)
-    goodindices = np.where(abs(rv2) < 50.0)[0]
-    result = fitter.fit(rv2[goodindices], x=rv1[goodindices], a=-2, b=0)
-    print result.fit_report()
-    a = result.params['a'].value
-    a_err = result.params['a'].stderr
-    b = result.params['b'].value
-    b_err = result.params['b'].stderr
-    C = (b + 12.29*a)/(1.0-a)
-    C_var = ( (12.29*a/(1.0-a)*b_err)**2 + ( ((b+12.29)/(1-a) + (1-a)*(b+12.29*a)/(1-a)**2)*a_err )**2 )
-    print "q = ", -1.0/a, " +/- ", 1.0/a**2 * a_err
-    print "C = ", C, "+/-", np.sqrt(C_var)
-
 def fit_q(rv1, rv2):
     goodindices = np.where(rv2 < 0)[0]
     rv1 = rv1[goodindices]
@@ -199,37 +156,57 @@ def CombineSmoothedCCFS():
 
 
     # Get the average ccf
-    #minval = np.min(ccfs)
-    #if minval < 0:
-    #    ccfs += abs(minval) + 1e-3
-    #ccfs += np.min(ccfs) + 1e-3
     avg_ccf = np.median(ccfs, axis=0)
     plt.plot(xgrid, avg_ccf, 'r-')
-    #avg_ccf -= np.median(avg_ccf)
-
-    # Subtract the median of each ccf
-    #meds = np.median(ccfs, axis=1)
-    #ccfs = (ccfs.T - meds).T
 
     # Normalize
     normed_ccfs = ccfs / avg_ccf
-    #normed_ccfs[...,3500:4500] = 1.0
 
     plt.figure(2)
-    plt.imshow(normed_ccfs, aspect='auto')#, vmin=-1, vmax=1)
+    plt.imshow(normed_ccfs, aspect='auto')
     plt.colorbar()
 
-    plt.figure(4)
-    plt.plot(xgrid, normed_ccfs[25])
 
-    #for i in range(normed_ccfs.shape[0]):
-    #    plt.figure(i+3)
-    #    plt.plot(xgrid, normed_ccfs[i])
+
+    # Get the stacked CCF for various values of q (mass-ratio)
+    prim_vel = [get_prim_rv(f) for f in original_files]
+    qvals = np.arange(0.05, 1.01, 0.01)
+    plt.figure(5)
+    snr = []
+    for j, q in enumerate(qvals):
+        total_ccf = np.zeros(normed_ccfs.shape[1])
+        minvel = np.inf
+        for i in range(normed_ccfs.shape[0]):
+            ccf = spline(xgrid, normed_ccfs[i])
+            vel = prim_vel[i] * (1. - 1./q)
+            #print(vel)
+            if vel < minvel:
+                minvel = vel
+            total_ccf += ccf(xgrid + vel)
+        print(minvel)
+        good = np.where(xgrid > xgrid[0] - minvel)[0]
+        plt.plot(xgrid[good], total_ccf[good]/float(normed_ccfs.shape[0]) + j*0.01, label='q = {:.3f}'.format(q))
+        gauss_pars = fit_gaussian(xgrid[good], total_ccf[good]/float(normed_ccfs.shape[0]))
+        print(gauss_pars)
+        const, amp, mu, sig = gauss_pars
+        sig = abs(sig)
+        noise_idx = np.where(abs(xgrid[good] - mu)/sig > 3)[0]
+        noise = np.std(total_ccf[good][noise_idx]/float(normed_ccfs.shape[0]))
+        snr.append(abs(amp)/noise)
+    plt.legend(loc='best', fancybox=True)
+
+    #TODO: This seems to work and gives mass ratios near 0.2-0.25. 
+    #But, the significance is higher for higher temperatures, while I 
+    #would think it should be for cooler temperatures (closer to the companion spectrum). 
+    #Figure out what is going on and if I am in fact seeing the companion signature!
+
+    plt.figure(6)
+    plt.plot(qvals, snr)
+
+    print('\nBest q = {:.3f}\n\n'.format(qvals[np.argmax(snr)]))
+
     plt.show()
 
-    #plt.figure(2)
-    #plt.plot(xgrid, ccfs[10])
-    #plt.show()
     sys.exit()
 
     # Get the primary star rv for each observation
