@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import sys
 import os
 from scipy.interpolate import InterpolatedUnivariateSpline as spline
+from scipy.optimize import leastsq
 from astropy.io import fits
 import astropy.time as time
 from astropy import units, constants
@@ -12,6 +13,8 @@ from lmfit import Model
 import statsmodels.api as sm
 import h5py
 import pandas as pd 
+import time
+import pickle
 
 BARY_DF = pd.read_csv('data/psi1draa_140p_28_37_ASW.dat', sep=' ', skipinitialspace=True, header=None)
 
@@ -21,7 +24,26 @@ def get_rv_correction(filename):
     jd = header['HJD']
     date = BARY_DF.ix[np.argmin(abs(BARY_DF[0]-jd))]
     return (date[1] + date[5] - date[2])*units.m.to(units.km)
+    #return (date[2] + date[5] - date[1])*units.m.to(units.km)
+    #return (date[5])*units.m.to(units.km)
 
+
+def get_centroid(x, y):
+    return np.sum(x*y) / np.sum(y)
+
+
+def fit_gaussian(x, y):
+    gauss = lambda x, C, A, mu, sig: C + A*np.exp(-(x-mu)**2 / (2.*sig**2))
+    errfcn = lambda p, x, y: (y - gauss(x, *p))**2
+
+    pars = [1, -0.5, 0, 10]
+    fitpars, success = leastsq(errfcn, pars, args=(x, y))
+    #plt.plot(x, y)
+    #plt.plot(x, gauss(x, *pars))
+    #plt.plot(x, gauss(x, *fitpars))
+    #plt.show()
+    #time.sleep(1)
+    return fitpars
 
 
 def get_ccfs(T=4000, vsini=5, logg=4.5, metal=0.5, hdf_file='Cross_correlations/CCF.hdf5', xgrid=np.arange(-400, 400, 1)):
@@ -30,6 +52,7 @@ def get_ccfs(T=4000, vsini=5, logg=4.5, metal=0.5, hdf_file='Cross_correlations/
     """
     ccfs = []
     filenames = []
+    rv_shift = {} if T > 6000 else pickle.load(open('rvs.pkl'))
     with h5py.File(hdf_file) as f:
         starname = 'psi1 Dra A'
         date_list = f[starname].keys()
@@ -40,11 +63,34 @@ def get_ccfs(T=4000, vsini=5, logg=4.5, metal=0.5, hdf_file='Cross_correlations/
                 if (ds.attrs['T'] == T and ds.attrs['vsini'] == vsini and
                             ds.attrs['logg'] == logg and ds.attrs['[Fe/H]'] == metal):
                     vel, corr = ds.value
-                    ccf = spline(vel[::-1]*-1, corr[::-1])
+                    ccf = spline(vel[::-1]*-1, (1.0-corr[::-1]))
                     fname = ds.attrs['fname']
                     vbary = get_rv_correction(fname)
+                    
+                    cont = FittingUtilities.Continuum(xgrid, ccf(xgrid-vbary), fitorder=2, lowreject=2.5, highreject=5)
+                    normed_ccf = ccf(xgrid-vbary)/cont
+                    centroid = get_centroid(xgrid, 1.0-normed_ccf)
+                    
+                    if T <= 6000:
+                        centroid = rv_shift[fname]
+                        top = 1.0
+                        amp = 1.0 - min(normed_ccf)
+                    else:
+                        gauss_pars = fit_gaussian(xgrid, normed_ccf)
+                        centroid = gauss_pars[2]
+                        amp = gauss_pars[1]
+                        top = gauss_pars[0]
+                    print(centroid, fname)
+
+                    cont = FittingUtilities.Continuum(xgrid, ccf(xgrid-vbary+centroid), fitorder=2, lowreject=2.5, highreject=5)
+                    normed_ccf = (ccf(xgrid-vbary+centroid) / cont - top)  * 0.5/abs(amp) + top
+
                     filenames.append(fname)
-                    ccfs.append(ccf(xgrid-vbary))
+                    ccfs.append(normed_ccf)
+                    rv_shift[fname] = centroid
+
+    if T > 6000:
+        pickle.dump(rv_shift, open('rvs.pkl', 'w'))
 
     return np.array(ccfs), filenames
 
@@ -147,12 +193,18 @@ def CombineSmoothedCCFS():
     plt.imshow(ccfs, aspect='auto')
     plt.colorbar()
 
+    plt.figure(3)
+    for i in range(ccfs.shape[0]):
+        plt.plot(xgrid, ccfs[i], 'k-', alpha=0.1)
+
+
     # Get the average ccf
-    minval = np.min(ccfs)
-    if minval < 0:
-        ccfs += abs(minval) + 1e-3
+    #minval = np.min(ccfs)
+    #if minval < 0:
+    #    ccfs += abs(minval) + 1e-3
     #ccfs += np.min(ccfs) + 1e-3
     avg_ccf = np.median(ccfs, axis=0)
+    plt.plot(xgrid, avg_ccf, 'r-')
     #avg_ccf -= np.median(avg_ccf)
 
     # Subtract the median of each ccf
@@ -160,13 +212,15 @@ def CombineSmoothedCCFS():
     #ccfs = (ccfs.T - meds).T
 
     # Normalize
-    print(np.min(ccfs), np.min(avg_ccf))
-    print(avg_ccf)
     normed_ccfs = ccfs / avg_ccf
+    #normed_ccfs[...,3500:4500] = 1.0
 
     plt.figure(2)
-    plt.imshow(normed_ccfs, aspect='auto', vmin=-1, vmax=1)
+    plt.imshow(normed_ccfs, aspect='auto')#, vmin=-1, vmax=1)
     plt.colorbar()
+
+    plt.figure(4)
+    plt.plot(xgrid, normed_ccfs[25])
 
     #for i in range(normed_ccfs.shape[0]):
     #    plt.figure(i+3)
