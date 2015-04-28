@@ -156,11 +156,11 @@ def CombineSmoothedCCFS():
 
 
     # Get the average ccf
-    avg_ccf = np.median(ccfs, axis=0)
+    avg_ccf = np.mean(ccfs, axis=0)
     plt.plot(xgrid, avg_ccf, 'r-')
 
     # Normalize
-    normed_ccfs = ccfs / avg_ccf
+    normed_ccfs = ccfs - avg_ccf
 
     plt.figure(2)
     plt.imshow(normed_ccfs, aspect='auto')
@@ -170,7 +170,9 @@ def CombineSmoothedCCFS():
 
     # Get the stacked CCF for various values of q (mass-ratio)
     prim_vel = [get_prim_rv(f) for f in original_files]
-    qvals = np.arange(0.05, 1.01, 0.01)
+    qvals = np.arange(0.1, 0.5, 0.01)
+    #qvals = np.arange(0.20, 0.30, 0.025)
+    space = 0.01
     plt.figure(5)
     snr = []
     for j, q in enumerate(qvals):
@@ -185,7 +187,7 @@ def CombineSmoothedCCFS():
             total_ccf += ccf(xgrid + vel)
         print(minvel)
         good = np.where(xgrid > xgrid[0] - minvel)[0]
-        plt.plot(xgrid[good], total_ccf[good]/float(normed_ccfs.shape[0]) + j*0.01, label='q = {:.3f}'.format(q))
+        plt.plot(xgrid[good], total_ccf[good]/float(normed_ccfs.shape[0]) + j*space, label='q = {:.3f}'.format(q))
         gauss_pars = fit_gaussian(xgrid[good], total_ccf[good]/float(normed_ccfs.shape[0]))
         print(gauss_pars)
         const, amp, mu, sig = gauss_pars
