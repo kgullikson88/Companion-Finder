@@ -24,7 +24,7 @@ def ReadFile(fname, blaze=None):
     orders = orders[::-1]  # Reverse order so the bluest order is first
 
     #Need to blaze-correct the later data
-    if int(fname[2:7]) > 50400 and blaze is not None:
+    if int(os.path.split(fname)[1][2:7]) > 50400 and blaze is not None:
         print "\tBlaze correcting!"
         try:
             blaze_orders = HelperFunctions.ReadFits(blaze)
@@ -68,34 +68,33 @@ def OutputFile(orders, fname, outfilename):
       
 
 def SortFiles():
-    allfiles = [f for f in os.listdir("./") if f.startswith("RV") and f.endswith(".fits") and "-" not in f and "smoothed" not in f]
-    Blaze = ["Blazefiles/{}".format(f) for f in os.listdir("Blazefiles")]
+    RV_files = [f for f in os.listdir("./") if f.startswith("RV") and f.endswith(".fits") and "-" not in f and "smoothed" not in f]
     object_files = []
     I2_files = []
     Blaze_files = []
 
-    # First, figure out which files are I2 vs object files
-    for fname in allfiles:
+    # Get the time for all RV files
+    for fname in RV_files:
         header = fits.getheader(fname)
-        time_obs = header['date-obs'] + "T" + header['UT']
+        time_obs = header['date-obs'].strip() + "T" + header['UT'].strip()
         t = time.Time(time_obs, format='isot', scale='utc').jd
-        if "psi" in header['object'].lower():
-            # Object file
-            object_files.append((fname, t))
-        else:
-            I2_files.append((fname, t))
+        object_files.append((fname, t))
+
+    # Get the time for all I2 files
+    for fname in ['../I2cells/{}'.format(f) for f in os.listdir('../I2cells') if f.endswith('.fits')]:
+        header = fits.getheader(fname)
+        time_obs = header['date-obs'].strip() + "T" + header['UT'].strip()
+        t = time.Time(time_obs, format='isot', scale='utc').jd
+        I2_files.append((fname, t))
 
     # Get the time for each of the blaze files
-    for fname in Blaze:
+    for fname in ["../Blazefiles/{}".format(f) for f in os.listdir("../Blazefiles") if f.endswith('.fits')]:
         header = fits.getheader(fname)
-        time_obs = header['date-obs'] + "T" + header['UT']
+        time_obs = header['date-obs'].strip() + "T" + header['UT'].strip()
         t = time.Time(time_obs, format='isot', scale='utc').jd
         Blaze_files.append((fname, t))
 
-    # Read in the RV data
-    bjd, rv = np.loadtxt("psi1draa_100_120_mcomb1.dat", usecols=(0,1), unpack=True)
-
-    # Now, associate an I2/blaze file and rv shift with each object
+    # Now, associate each object with an I2/blaze file
     association = {}
     for fname, jd in object_files:
         # Associate with I2
@@ -116,13 +115,7 @@ def SortFiles():
                 bestidx = i
         bestblaze = Blaze_files[bestidx][0]
 
-        # Associate with rv
-        #idx = np.argmin(abs(bjd - jd))
-        #vel = rv[idx]
-        #vel = GenericSearch.HelCorr(header, observatory="McDonald")*1000.0
-        vel = 0.0
-
-        association[fname] = [bestI2, bestblaze, vel]
+        association[fname] = [bestI2, bestblaze]
 
 
     return association
@@ -170,14 +163,8 @@ def DoAll():
                 new_i2 = fit_i2(o.copy(), i2.copy())
 
                 o.y /= new_i2.y/new_i2.cont
-            o.x /= (1.0 + association[object_file][2] / c.value)
             corrected_orders.append(o.copy())
-            #plt.plot(o.x, o.y/o.cont, 'k-', alpha=0.4)
-            #plt.plot(o.x, i2.y/i2.cont, 'r-', alpha=0.4)
-            new_i2 = fit_i2(o.copy(), i2.copy())
-            #plt.plot(o.x, new_i2.y/new_i2.cont, 'g-', alpha=0.4)
-        #plt.show()
-        #sys.exit()
+
         OutputFile(corrected_orders, object_file, outputfile)
 
 
@@ -185,8 +172,3 @@ def DoAll():
 
 if __name__ == "__main__":
     DoAll()
-    for fname in sys.argv[1:]:
-        header = fits.getheader(fname)
-        if  "psi" in header['object'].lower():
-            print fname
-            ReadFile(fname)
