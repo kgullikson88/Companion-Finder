@@ -142,7 +142,7 @@ def CombineSmoothedCCFS():
     dV = 0.1
     xgrid = np.arange(-400, 400+dV/2., dV)
     ccfs, original_files = get_ccfs(T=T, vsini=vsini, logg=logg, metal=metal,
-                                    hdf_file="Cross_correlations/CCF_raw.hdf5",
+                                    hdf_file="Cross_correlations/CCF.hdf5",
                                     xgrid=xgrid)
 
 

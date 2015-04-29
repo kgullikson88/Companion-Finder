@@ -17,7 +17,9 @@ import StarData
 
 
 # Define regions contaminated by telluric residuals or other defects. We will not use those regions in the cross-correlation
-badregions = [[567.5, 575.5],
+badregions = [[0, 475],
+#              [460, 475],
+              [567.5, 575.5],
               [588.5, 598.5],
               [627, 632],
               [647, 655],
@@ -61,7 +63,7 @@ if __name__ == '__main__':
                                         modeldir=modeldir,
                                         badregions=badregions,
                                         metal_values=(0.0, -0.5, 0.5),
-                                        vsini_values=(5,),
+                                        vsini_values=(1, 5,),
                                         Tvalues=range(3000, 7000, 100),
                                         observatory='McDonald',
                                         debug=False,
