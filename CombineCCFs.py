@@ -55,7 +55,7 @@ def fit_gaussian(x, y):
     return fitpars
 
 
-def get_ccfs(T=4000, vsini=5, logg=4.5, metal=0.5, hdf_file='Cross_correlations/CCF.hdf5', xgrid=np.arange(-400, 400, 1)):
+def get_ccfs(T=4000, vsini=5, logg=4.5, metal=0.5, hdf_file='Cross_correlations/CCF.hdf5', xgrid=np.arange(-400, 400, 1), addmode='simple'):
     """
     Get the cross-correlation functions for the given parameters, for all stars
     """
@@ -70,7 +70,8 @@ def get_ccfs(T=4000, vsini=5, logg=4.5, metal=0.5, hdf_file='Cross_correlations/
             for ds_name in datasets:
                 ds = f[starname][date][ds_name]
                 if (ds.attrs['T'] == T and ds.attrs['vsini'] == vsini and
-                            ds.attrs['logg'] == logg and ds.attrs['[Fe/H]'] == metal):
+                            ds.attrs['logg'] == logg and ds.attrs['[Fe/H]'] == metal and
+                            ds.attrs['addmode'] == addmode):
                     vel, corr = ds.value
                     ccf = spline(vel[::-1]*-1, (1.0-corr[::-1]))
                     fname = ds.attrs['fname']
@@ -112,6 +113,7 @@ def CombineSmoothedCCFS():
     vsini = 5
     logg = 4.5
     metal = 0.0
+    addmode = 'simple'
     for arg in sys.argv[1:]:
         if "-T" in arg:
             T = int(arg.split("=")[1])
@@ -121,10 +123,13 @@ def CombineSmoothedCCFS():
             logg = float(arg.split("=")[1])
         elif "-m" in arg:
             metal = float(arg.split("=")[1])
+        elif '-a' in arg:
+            addmode = arg.split('=')[1]
 
     
     summary = defaultdict(list)
-    #qvals, snr, ccfs, file_list = fit_q(T, vsini, logg, metal, plot=True)
+    qvals, snr, ccfs, file_list = fit_q(T, vsini, logg, metal, plot=True, addmode=addmode)
+    sys.exit()
     
     for Ti, temp in enumerate(range(3000, 6000, 100)):
         print('Finding the best q for T = {} K'.format(temp))
@@ -140,7 +145,7 @@ def CombineSmoothedCCFS():
     
 
 
-def fit_q(T, vsini, logg, metal, ccfs=None, original_files=None, plot=True):
+def fit_q(T, vsini, logg, metal, ccfs=None, original_files=None, plot=True, addmode='simple'):
     # Get all the ccfs with the requested parameters
     dV = 0.1
     c = constants.c.cgs.to(units.m/units.s).value
@@ -148,7 +153,7 @@ def fit_q(T, vsini, logg, metal, ccfs=None, original_files=None, plot=True):
     if ccfs is None or original_files is None:
         ccfs, original_files = get_ccfs(T=T, vsini=vsini, logg=logg, metal=metal,
                                         hdf_file="Cross_correlations/CCF.hdf5",
-                                        xgrid=xgrid)
+                                        xgrid=xgrid, addmode=addmode)
 
 
     # Get the average ccf
