@@ -45,7 +45,8 @@ def fit_gaussian(x, y):
     gauss = lambda x, C, A, mu, sig: C + A*np.exp(-(x-mu)**2 / (2.*sig**2))
     errfcn = lambda p, x, y: (y - gauss(x, *p))**2
 
-    pars = [1, -0.5, 0, 10]
+    #pars = [1, -0.5, 0, 10]
+    pars = [0, 0.5, 0, 10]
     fitpars, success = leastsq(errfcn, pars, args=(x, y))
     #plt.plot(x, y)
     #plt.plot(x, gauss(x, *pars))
@@ -73,18 +74,24 @@ def get_ccfs(T=4000, vsini=5, logg=4.5, metal=0.5, hdf_file='Cross_correlations/
                             ds.attrs['logg'] == logg and ds.attrs['[Fe/H]'] == metal and
                             ds.attrs['addmode'] == addmode):
                     vel, corr = ds.value
-                    ccf = spline(vel[::-1]*-1, (1.0-corr[::-1]))
+                    #ccf = spline(vel[::-1]*-1, (1.0-corr[::-1]))
+                    ccf = spline(vel[::-1]*-1, corr[::-1])
                     fname = ds.attrs['fname']
                     vbary = get_rv_correction(fname)
                     
-                    cont = FittingUtilities.Continuum(xgrid, ccf(xgrid-vbary), fitorder=2, lowreject=2.5, highreject=5)
-                    normed_ccf = ccf(xgrid-vbary)/cont
-                    centroid = get_centroid(xgrid, 1.0-normed_ccf)
+                    #cont = FittingUtilities.Continuum(xgrid, ccf(xgrid-vbary), fitorder=2, lowreject=2.5, highreject=5)
+                    #normed_ccf = ccf(xgrid-vbary)/cont
+                    cont = FittingUtilities.Continuum(xgrid, ccf(xgrid-vbary), fitorder=2, lowreject=5, highreject=2.5)
+                    normed_ccf = ccf(xgrid-vbary) - cont
                     
                     if T <= 6000:
                         centroid = rv_shift[fname]
-                        top = 1.0
-                        amp = 1.0 - min(normed_ccf)
+                        #top = 1.0
+                        #amp = 1.0 - min(normed_ccf)
+                        top = 0.0
+                        amp = max(normed_ccf)
+                        #idx = np.argmin(np.abs(xgrid-centroid))
+                        #amp = normed_ccfs[idx]
                     else:
                         gauss_pars = fit_gaussian(xgrid, normed_ccf)
                         centroid = gauss_pars[2]
@@ -93,8 +100,10 @@ def get_ccfs(T=4000, vsini=5, logg=4.5, metal=0.5, hdf_file='Cross_correlations/
                         amp = 0.5
                     print(centroid, fname)
 
-                    cont = FittingUtilities.Continuum(xgrid, ccf(xgrid-vbary+centroid), fitorder=2, lowreject=2.5, highreject=5)
-                    normed_ccf = (ccf(xgrid-vbary+centroid) / cont - top)  * 0.5/abs(amp) + top
+                    #cont = FittingUtilities.Continuum(xgrid, ccf(xgrid-vbary+centroid), fitorder=2, lowreject=2.5, highreject=5)
+                    #normed_ccf = (ccf(xgrid-vbary+centroid) / cont - top)  * 0.5/abs(amp) + top
+                    cont = FittingUtilities.Continuum(xgrid, ccf(xgrid-vbary+centroid), fitorder=2, lowreject=5, highreject=2.5)
+                    normed_ccf = (ccf(xgrid-vbary+centroid) - cont)  * 0.5/abs(amp)
 
                     filenames.append(fname)
                     ccfs.append(normed_ccf)
