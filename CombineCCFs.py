@@ -86,6 +86,7 @@ def get_ccfs(T=4000, vsini=5, logg=4.5, metal=0.5, hdf_file='Cross_correlations/
                     
                     if T <= 6000:
                         centroid = rv_shift[fname]
+                        #centroid = xgrid[np.argmax(normed_ccf)]
                         #top = 1.0
                         #amp = 1.0 - min(normed_ccf)
                         top = 0.0
