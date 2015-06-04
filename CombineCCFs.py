@@ -17,7 +17,7 @@ import FittingUtilities
 BARY_DF = pd.read_csv('data/psi1draa_140p_28_37_ASW.dat', sep=' ', skipinitialspace=True, header=None)
 
 
-def get_rv_correction(filename):
+def get_rv_correction_tabulated(filename):
     header = fits.getheader(filename)
     jd = header['HJD']
     date = BARY_DF.ix[np.argmin(abs(BARY_DF[0]-jd))]
@@ -26,6 +26,15 @@ def get_rv_correction(filename):
     #return (date[5] + date[2])*units.m.to(units.km)
     return (date[5] - date[9]) * units.m.to(units.km)
     #return 0.0
+
+def get_rv_correction(filename):
+    header = fits.getheader(filename)
+    import HelCorr
+    from HelperFunctions import convert_hex_string
+    ra = convert_hex_string(header['RA'])
+    dec = convert_hex_string(header['DEC'])
+    jd = header['JD']
+    return HelCorr.x_keckhelio(ra, dec, obs='mcdonald', jd=jd)
 
 
 def get_prim_rv(filename):
