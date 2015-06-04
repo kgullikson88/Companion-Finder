@@ -1,22 +1,18 @@
+import sys
+import pickle
+from collections import defaultdict
+
 import numpy as np
 import matplotlib.pyplot as plt
-import sys
-import os
 from scipy.interpolate import InterpolatedUnivariateSpline as spline
 from scipy.optimize import leastsq
 from astropy.io import fits
-import astropy.time as time
 from astropy import units, constants
-import FittingUtilities
-import GenericSearch
-from lmfit import Model
-import statsmodels.api as sm
 import h5py
-import pandas as pd 
-import time
-import pickle
-import seaborn as sns
-from collections import defaultdict
+import pandas as pd
+
+import FittingUtilities
+
 
 BARY_DF = pd.read_csv('data/psi1draa_140p_28_37_ASW.dat', sep=' ', skipinitialspace=True, header=None)
 
@@ -25,16 +21,18 @@ def get_rv_correction(filename):
     header = fits.getheader(filename)
     jd = header['HJD']
     date = BARY_DF.ix[np.argmin(abs(BARY_DF[0]-jd))]
-    return (date[1] + date[5] - date[2])*units.m.to(units.km)
-    #return (date[2] + date[5] - date[1])*units.m.to(units.km)
-    #return (date[5])*units.m.to(units.km)
+    # return (date[1] + date[5] - date[2])*units.m.to(units.km)
+    #return (date[1] + date[5])*units.m.to(units.km)  # This should be the barycentric correction only
+    #return (date[5] + date[2])*units.m.to(units.km)
+    return (date[5] - date[9]) * units.m.to(units.km)
+    #return 0.0
 
 
 def get_prim_rv(filename):
     header = fits.getheader(filename)
     jd = header['HJD']
     date = BARY_DF.ix[np.argmin(abs(BARY_DF[0]-jd))]
-    return date[2]*units.m.to(units.km)
+    return date[1] * units.m.to(units.km)
 
 
 def get_centroid(x, y):
@@ -56,7 +54,8 @@ def fit_gaussian(x, y):
     return fitpars
 
 
-def get_ccfs(T=4000, vsini=5, logg=4.5, metal=0.5, hdf_file='Cross_correlations/CCF.hdf5', xgrid=np.arange(-400, 400, 1), addmode='simple'):
+def get_ccfs(T=4000, vsini=5, logg=4.5, metal=0.5, hdf_file='Cross_correlations/CCF.hdf5',
+             xgrid=np.arange(-400, 400, 1), addmode='simple'):
     """
     Get the cross-correlation functions for the given parameters, for all stars
     """
@@ -76,6 +75,7 @@ def get_ccfs(T=4000, vsini=5, logg=4.5, metal=0.5, hdf_file='Cross_correlations/
                     vel, corr = ds.value
                     #ccf = spline(vel[::-1]*-1, (1.0-corr[::-1]))
                     ccf = spline(vel[::-1]*-1, corr[::-1])
+                    #ccf = spline(vel, corr)
                     fname = ds.attrs['fname']
                     vbary = get_rv_correction(fname)
                     
