@@ -17,17 +17,17 @@ import FittingUtilities
 BARY_DF = pd.read_csv('data/psi1draa_140p_28_37_ASW.dat', sep=' ', skipinitialspace=True, header=None)
 
 
-def get_rv_correction_tabulated(filename):
+def get_rv_correction(filename):
     header = fits.getheader(filename)
     jd = header['HJD']
     date = BARY_DF.ix[np.argmin(abs(BARY_DF[0]-jd))]
     # return (date[1] + date[5] - date[2])*units.m.to(units.km)
     #return (date[1] + date[5])*units.m.to(units.km)  # This should be the barycentric correction only
     #return (date[5] + date[2])*units.m.to(units.km)
-    return (date[5] - date[9]) * units.m.to(units.km)
+    return (date[5]) * units.m.to(units.km)
     #return 0.0
 
-def get_rv_correction(filename):
+def get_rv_correction_calculated(filename):
     header = fits.getheader(filename)
     import HelCorr
     from HelperFunctions import convert_hex_string
