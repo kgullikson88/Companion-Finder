@@ -141,6 +141,8 @@ def fit_i2(order, i2, fitorder=1):
 
     new_i2 = order.copy()
     dx = poly(pars, np.median(order.x), min(order.x), max(order.x), order.x)
+    print(dx)
+    print(dx/order.x * constants.c.cgs.to(units.km/units.s))
     new_i2.y = i2_fcn(order.x + dx)
     new_i2.cont = np.ones(new_i2.size())
     return new_i2
@@ -165,7 +167,7 @@ def DoAll():
                 o.y /= new_i2.y/new_i2.cont
             corrected_orders.append(o.copy())
 
-        OutputFile(corrected_orders, object_file, outputfile)
+        #OutputFile(corrected_orders, object_file, outputfile)
 
 
 

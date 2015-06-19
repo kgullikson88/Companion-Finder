@@ -16,6 +16,7 @@ import pandas as pd
 import time
 import pickle
 import seaborn as sns
+import HelperFunctions
 from collections import defaultdict
 
 BARY_DF = pd.read_csv('data/psi1draa_140p_28_37_ASW.dat', sep=' ', skipinitialspace=True, header=None)
@@ -30,11 +31,20 @@ def get_rv_correction(filename):
     #return (date[5])*units.m.to(units.km)
 
 
+"""
 def get_prim_rv(filename):
     header = fits.getheader(filename)
     jd = header['HJD']
     date = BARY_DF.ix[np.argmin(abs(BARY_DF[0]-jd))]
     return date[2]*units.m.to(units.km)
+"""
+
+def get_prim_rv(filename, T0=2449824, P=7345, e=0.669, K1=5.113, w=29.0, data_shift=4.018):
+    header = fits.getheader(filename)
+    jd = header['HJD']
+    
+    orbit_rv = get_rv(T0, P, e, K1, w*np.pi/180., jd)
+    return orbit_rv + data_shift
 
 
 def get_centroid(x, y):
@@ -45,14 +55,8 @@ def fit_gaussian(x, y):
     gauss = lambda x, C, A, mu, sig: C + A*np.exp(-(x-mu)**2 / (2.*sig**2))
     errfcn = lambda p, x, y: (y - gauss(x, *p))**2
 
-    #pars = [1, -0.5, 0, 10]
     pars = [0, 0.5, 0, 10]
     fitpars, success = leastsq(errfcn, pars, args=(x, y))
-    #plt.plot(x, y)
-    #plt.plot(x, gauss(x, *pars))
-    #plt.plot(x, gauss(x, *fitpars))
-    #plt.show()
-    #time.sleep(1)
     return fitpars
 
 
@@ -237,6 +241,60 @@ def fit_q(T, vsini, logg, metal, ccfs=None, original_files=None, plot=True, addm
     return qvals, snr, ccfs, original_files
 
 
+"""
+================================
+  Functions for getting RV(t)
+================================
+"""
+
+def get_eccentric_anomaly(M, e):
+    """
+    Get the eccentric anomaly (E) from the mean anomaly (M) and orbital eccentricity (e)
+    Uses the equation M = E - esinE
+    """
+    if HelperFunctions.IsListlike(M):
+        return [get_eccentric_anomaly(Mi, e) for Mi in M]
+
+    chisquare = lambda E: (E - e*np.sin(E) - M)**2
+
+    from scipy.optimize import minimize_scalar
+    output = minimize_scalar(chisquare, bounds=[0, 2*np.pi], method='bounded')
+    return output.x
+
+
+def get_true_anomaly(E, e):
+    """
+    Get the true anomaly from the eccentric anomaly (E) and the eccentricity
+    """
+    A = (np.cos(E) - e)/(1-e*np.cos(E))
+    B = (np.sqrt(1.-e**2) * np.sin(E)) / (1.-e*np.cos(E))
+    return np.arctan2(B, A)
+
+
+def get_rv(T0, P, e, K1, w, t):
+    """
+    Get the radial velocity at time t, given the parameters:
+    T0 = periastron passage
+    P = orbital period (days)
+    e = eccentricity
+    K1 = semiamplitude
+    w = longitude of pericenter (radians)
+    """
+    phase = get_phase(P, T0, t)
+    M = 2.0*np.pi*phase
+    Erad = get_eccentric_anomaly(M, e)
+    nu = get_true_anomaly(Erad, e)
+
+    return K1 * (np.cos(nu+w) + e*np.cos(w))
+
+
+def get_phase(P, T, t):
+    """
+    Get the phase from the parameters at time t
+    """
+    U = (t-T)/P
+    phase = np.mod(U, 1.0)
+    return phase
 
 
 if __name__ == "__main__":
