@@ -41,13 +41,13 @@ def get_rv_correction_calculated(filename):
     return HelCorr.x_keckhelio(ra, dec, obs='mcdonald', jd=jd)
 
 
-"""
-def get_prim_rv(filename):
+
+def get_measured_rv(filename):
     header = fits.getheader(filename)
     jd = header['HJD']
     date = BARY_DF.ix[np.argmin(abs(BARY_DF[0]-jd))]
-    return date[1]*units.m.to(units.km)
-"""
+    return date[2]*units.m.to(units.km), date[3]*units.m.to(units.km)
+
 
 def get_prim_rv(filename, T0=2449824, P=7345, e=0.669, K1=5.113, w=29.0, data_shift=4.018):
     header = fits.getheader(filename)
