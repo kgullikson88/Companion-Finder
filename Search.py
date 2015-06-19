@@ -1,12 +1,6 @@
 import sys
-import logging
-import os
-
-import pandas
-from astropy.io import fits
 
 import GenericSearch
-import StarData
 
 
 
@@ -18,7 +12,7 @@ import StarData
 
 # Define regions contaminated by telluric residuals or other defects. We will not use those regions in the cross-correlation
 badregions = [[0, 475],
-#              [460, 475],
+              # [460, 475],
               [567.5, 575.5],
               [588.5, 598.5],
               [627, 632],
@@ -45,7 +39,6 @@ else:
     if not modeldir.endswith("/"):
         modeldir = modeldir + "/"
 
-
 if __name__ == '__main__':
     # Parse command line arguments:
     fileList = []
@@ -68,7 +61,7 @@ if __name__ == '__main__':
                                         observatory='McDonald',
                                         debug=False,
                                         vbary_correct=False,
-                                        addmode='ml',
+                                        addmode='simple',
                                         obstype='real',
                                         output_mode='hdf5')
 

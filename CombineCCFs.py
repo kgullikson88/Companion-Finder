@@ -1,16 +1,13 @@
+import sys
+import pickle
+from collections import defaultdict
+
 import numpy as np
 import matplotlib.pyplot as plt
-import sys
-import os
 from scipy.interpolate import InterpolatedUnivariateSpline as spline
 from scipy.optimize import leastsq
 from astropy.io import fits
-import astropy.time as time
 from astropy import units, constants
-import FittingUtilities
-import GenericSearch
-from lmfit import Model
-import statsmodels.api as sm
 import h5py
 import pandas as pd 
 import time
@@ -19,6 +16,8 @@ import seaborn as sns
 import HelperFunctions
 from collections import defaultdict
 
+import FittingUtilities
+
 BARY_DF = pd.read_csv('data/psi1draa_140p_28_37_ASW.dat', sep=' ', skipinitialspace=True, header=None)
 
 
@@ -26,9 +25,20 @@ def get_rv_correction(filename):
     header = fits.getheader(filename)
     jd = header['HJD']
     date = BARY_DF.ix[np.argmin(abs(BARY_DF[0]-jd))]
-    return (date[1] + date[5] - date[2])*units.m.to(units.km)
-    #return (date[2] + date[5] - date[1])*units.m.to(units.km)
-    #return (date[5])*units.m.to(units.km)
+    # return (date[1] + date[5] - date[2])*units.m.to(units.km)
+    #return (date[1] + date[5])*units.m.to(units.km)  # This should be the barycentric correction only
+    #return (date[5] + date[2])*units.m.to(units.km)
+    return (date[5]) * units.m.to(units.km)
+    #return 0.0
+
+def get_rv_correction_calculated(filename):
+    header = fits.getheader(filename)
+    import HelCorr
+    from HelperFunctions import convert_hex_string
+    ra = convert_hex_string(header['RA'])
+    dec = convert_hex_string(header['DEC'])
+    jd = header['JD']
+    return HelCorr.x_keckhelio(ra, dec, obs='mcdonald', jd=jd)
 
 
 """
@@ -36,7 +46,7 @@ def get_prim_rv(filename):
     header = fits.getheader(filename)
     jd = header['HJD']
     date = BARY_DF.ix[np.argmin(abs(BARY_DF[0]-jd))]
-    return date[2]*units.m.to(units.km)
+    return date[1]*units.m.to(units.km)
 """
 
 def get_prim_rv(filename, T0=2449824, P=7345, e=0.669, K1=5.113, w=29.0, data_shift=4.018):
@@ -60,7 +70,8 @@ def fit_gaussian(x, y):
     return fitpars
 
 
-def get_ccfs(T=4000, vsini=5, logg=4.5, metal=0.5, hdf_file='Cross_correlations/CCF.hdf5', xgrid=np.arange(-400, 400, 1), addmode='simple'):
+def get_ccfs(T=4000, vsini=5, logg=4.5, metal=0.5, hdf_file='Cross_correlations/CCF.hdf5',
+             xgrid=np.arange(-400, 400, 1), addmode='simple'):
     """
     Get the cross-correlation functions for the given parameters, for all stars
     """
@@ -80,6 +91,7 @@ def get_ccfs(T=4000, vsini=5, logg=4.5, metal=0.5, hdf_file='Cross_correlations/
                     vel, corr = ds.value
                     #ccf = spline(vel[::-1]*-1, (1.0-corr[::-1]))
                     ccf = spline(vel[::-1]*-1, corr[::-1])
+                    #ccf = spline(vel, corr)
                     fname = ds.attrs['fname']
                     vbary = get_rv_correction(fname)
                     
