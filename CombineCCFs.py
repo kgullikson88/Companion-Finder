@@ -270,7 +270,7 @@ def get_eccentric_anomaly(M, e):
     chisquare = lambda E: (E - e*np.sin(E) - M)**2
 
     from scipy.optimize import minimize_scalar
-    output = minimize_scalar(chisquare, bounds=[0, 2*np.pi], method='bounded')
+    output = minimize_scalar(chisquare, bounds=[0, 2*np.pi], method='brent')
     return output.x
 
 
