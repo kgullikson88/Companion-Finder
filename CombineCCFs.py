@@ -5,7 +5,7 @@ from collections import defaultdict
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.interpolate import InterpolatedUnivariateSpline as spline
-from scipy.optimize import leastsq
+from scipy.optimize import leastsq, newton, minimize_scalar
 from astropy.io import fits
 from astropy import units, constants
 import h5py
@@ -259,7 +259,7 @@ def fit_q(T, vsini, logg, metal, ccfs=None, original_files=None, plot=True, addm
 ================================
 """
 
-def get_eccentric_anomaly(M, e):
+def get_eccentric_anomaly_old(M, e):
     """
     Get the eccentric anomaly (E) from the mean anomaly (M) and orbital eccentricity (e)
     Uses the equation M = E - esinE
@@ -269,9 +269,25 @@ def get_eccentric_anomaly(M, e):
 
     chisquare = lambda E: (E - e*np.sin(E) - M)**2
 
-    from scipy.optimize import minimize_scalar
     output = minimize_scalar(chisquare, bounds=[0, 2*np.pi], method='brent')
     return output.x
+
+def get_eccentric_anomaly(M, e):
+    """
+    Get the eccentric anomaly (E) from the mean anomaly (M) and orbital eccentricity (e)
+    Uses the equation M = E - esinE
+    """
+    if HelperFunctions.IsListlike(M):
+        return [get_eccentric_anomaly(Mi, e) for Mi in M]
+
+    func = lambda E: E - e*np.sin(E) - M
+    dfunc = lambda E: 1.0 - e*np.cos(E)
+    d2func = lambda E: e*np.sin(E)
+
+    output = newton(func, np.pi, fprime=dfunc, fprime2=d2func)
+
+    #output = minimize_scalar(chisquare, bounds=[0, 2*np.pi], method='brent')
+    return output
 
 
 def get_true_anomaly(E, e):

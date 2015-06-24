@@ -10,6 +10,8 @@ import triangle
 from CombineCCFs import get_rv
 from matplotlib import gridspec
 from matplotlib.ticker import FuncFormatter
+import os
+import pandas as pd
 
 sns.set_context('paper', font_scale=2.0)
 
@@ -45,13 +47,13 @@ def fit_partial(T0, P, e, K1, w, t, rv2, rv2_err):
     ndim = len(initial_pars)
     nwalkers = 100
     p0 = emcee.utils.sample_ball(initial_pars, std=[1e-6]*ndim, size=nwalkers)
-    sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob_partial, args=(rv2, rv2_err, rv1_pred), threads=4)
+    sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob_partial, args=(rv2, rv2_err, rv1_pred), threads=2)
 
     # Run the sampler
     pos, lp, state = sampler.run_mcmc(p0, 1000)
 
     # Save the last 500 (we will just have to hope that the sampler sufficiently burns-in in 500 steps. That is true in tests I've done)
-    samples = sampler.chain[:, 200:, :].reshape((-1, ndim))
+    samples = sampler.chain[:, 500:, :].reshape((-1, ndim))
     return samples
 
 
@@ -122,14 +124,12 @@ def full_sb2_fit(t1, rv1, rv1_err, t2, rv2, rv2_err):
 
 def lnlike_sb1(pars, t1, v1, v1_err):
     K1, P, T0, w, e, dv1 = pars
-    rv1_pred = np.array([get_rv(T0=T0, P=P, e=e, K1=K1, w=w, t=t) for t in t1])
+    rv1_pred = get_rv(T0=T0, P=P, e=e, K1=K1, w=w, t=t1) + dv1
     
     inv_sigma2_1 = 1.0/v1_err**2
-    s1 = np.nansum((rv1_pred - (v1-dv1))**2 * inv_sigma2_1 - np.log(inv_sigma2_1))
-    #print(s1)
-    #print(s2)
+    s1 = np.nansum((rv1_pred - v1)**2 * inv_sigma2_1 - np.log(inv_sigma2_1))
+
     return -0.5*s1
-    #return -0.5*np.nansum((rv2_pred[first:] - (v[first:]+rv1_pred[first:]-dv))**2 * inv_sigma2 - np.log(inv_sigma2))
 
 def lnprior_sb1(pars):
     """Gaussian prior
@@ -147,7 +147,7 @@ def lnprob_sb1(pars, t1, v1, v1_err):
 
 def sb1_fit(t1, rv1, rv1_err):
     """
-    Do a full SB2 fit.
+    Fit the primary star rvs only. This should be consistent with Stefano's fit.
     """
     initial_pars = [5.113, 7345, 2449824, 29*np.pi/180., 0.669, 4.018]
 
@@ -233,19 +233,16 @@ def plot(pars, t1, v1, v1_err, t2, v2, v2_err):
 
 def read_primary_chains():
     # Read in MCMC chains for the primary star parameters
-    # For now, I am just spoofing this function so I can test
-    #T0 = np.atleast_1d(2449824)
-    #P = np.atleast_1d(7345)
-    #e = np.atleast_1d(0.669)
-    #K1 = np.atleast_1d(5.113)
-    #w = np.atleast_1d(29.0)
-    T0 = np.random.normal(loc=2449824, scale=452, size=10000)
-    P = np.random.normal(loc=7345, scale=452, size=10000)
-    e = np.random.normal(loc=0.669, scale=0.008, size=10000)
-    K1 = np.random.normal(loc=5.113, scale=0.044, size=10000)
-    w = np.random.normal(loc=29, scale=1, size=10000)
+    home = os.environ['HOME']
+    fname = '{}/School/Research/McdonaldData/PlanetData/RV_fit/mcmc_samples/psidraa_els.txt'.format(home)
+    chain = pd.read_fwf(fname)
 
-    return np.vstack((T0, P, e, K1, w))
+    # Unit conversion
+    chain['k'] /= 1000.0
+
+    vals = chain[['tperi', 'period', 'ecc', 'k', 'lop']].get_values()
+    return vals
+
 
 
 def read_data(first=20):
@@ -254,14 +251,21 @@ def read_data(first=20):
     return date, rv1, rv1_err, date[first:], rv2[first:], rv2_err[first:]
 
 
-def fit_partial():
+def do_partial_fit(N=100):
     prim_pars = read_primary_chains()
+    t1, rv1, rv1_err, t2, rv2, rv2_err = read_data()
     
     # Sample a subset of the chain parameters, since each one takes a little while
-    for idx in np.random.randint(0, prim_pars.shape[1], 10):
-        continue
+    sample_list = []
+    for i, idx in enumerate(np.random.randint(0, prim_pars.shape[0], N)):
+        print('\n{}/{}: Fitting mass-ratio for primary orbit parameters: '.format(i+1, N))
+        print(prim_pars[idx])
+        samp = fit_partial(*prim_pars[idx], t=t2, rv2=rv2, rv2_err=rv2_err)
+        sample_list.append(samp)
+
+    return np.concatenate(sample_list)
 
 
 if __name__ == '__main__':
-    t1, rv1, rv1_err, t2, rv2, r2_err = read_data()
+    t1, rv1, rv1_err, t2, rv2, rv2_err = read_data()
 
