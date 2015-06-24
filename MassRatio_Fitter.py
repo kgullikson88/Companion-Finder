@@ -109,12 +109,73 @@ def full_sb2_fit(t1, rv1, rv1_err, t2, rv2, rv2_err):
     p1 = emcee.utils.sample_ball(best_pars, std=[1e-6]*ndim, size=nwalkers)
 
     # Run again (this is the production run)
+    sampler.reset()
     for i, result in enumerate(sampler.sample(p1, iterations=2000)):
         if i%10 == 0:
             print('Done with production iteration {:03d}'.format(i))
 
     return sampler
 
+
+
+
+
+def lnlike_sb1(pars, t1, v1, v1_err):
+    K1, P, T0, w, e, dv1 = pars
+    rv1_pred = np.array([get_rv(T0=T0, P=P, e=e, K1=K1, w=w, t=t) for t in t1])
+    
+    inv_sigma2_1 = 1.0/v1_err**2
+    s1 = np.nansum((rv1_pred - (v1-dv1))**2 * inv_sigma2_1 - np.log(inv_sigma2_1))
+    #print(s1)
+    #print(s2)
+    return -0.5*s1
+    #return -0.5*np.nansum((rv2_pred[first:] - (v[first:]+rv1_pred[first:]-dv))**2 * inv_sigma2 - np.log(inv_sigma2))
+
+def lnprior_sb1(pars):
+    """Gaussian prior
+    """
+    K1, P, T0, w, e, dv1 = pars
+    #if 3 < K1 < 7 and K2 > K1 and 0.6 < e < 0.7 and 6000 < P < 8500 and 0.35 < w < 0.7 and -20 < dv1 < 20 and -20 < dv2 < 20 and lnf < 0:
+    if 3 < K1 < 7 and 0.2 < e < 1. and 5000 < P < 9000 and 0.15 < w < 0.9 and -20 < dv1 < 20:
+        return 0.0
+    return -np.inf
+
+def lnprob_sb1(pars, t1, v1, v1_err):
+    lp = lnprior_sb1(pars)
+    return lp + lnlike_sb1(pars, t1, v1, v1_err) if np.isfinite(lp) else -np.inf
+
+
+def sb1_fit(t1, rv1, rv1_err):
+    """
+    Do a full SB2 fit.
+    """
+    initial_pars = [5.113, 7345, 2449824, 29*np.pi/180., 0.669, 4.018]
+
+    ndim = len(initial_pars)
+    nwalkers = 300
+    p0 = emcee.utils.sample_ball(initial_pars, std=[1e-6]*ndim, size=nwalkers)
+    sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob_sb1, args=(t1, rv1, rv1_err), threads=2)
+
+    # Run for a while
+    for i, result in enumerate(sampler.sample(p0, iterations=2000)):
+        if i%10 == 0:
+            print('Done with burn-in iteration {:03d}'.format(i))
+    return sampler
+    
+    """
+    # Get the best chain position and resample from there
+    pos, lnp, state = result
+    best_pars = pos[np.argmax(lnp)]
+    p1 = emcee.utils.sample_ball(best_pars, std=[1e-6]*ndim, size=nwalkers)
+
+    # Run again (this is the production run)
+    sampler.reset()
+    for i, result in enumerate(sampler.sample(p1, iterations=2000)):
+        if i%10 == 0:
+            print('Done with production iteration {:03d}'.format(i))
+
+    return sampler
+    """
 
 
 def plot(pars, t1, v1, v1_err, t2, v2, v2_err):
