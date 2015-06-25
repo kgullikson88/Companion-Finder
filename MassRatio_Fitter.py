@@ -157,7 +157,7 @@ def sb1_fit(t1, rv1, rv1_err):
     sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob_sb1, args=(t1, rv1, rv1_err), threads=2)
 
     # Run for a while
-    for i, result in enumerate(sampler.sample(p0, iterations=2000)):
+    for i, result in enumerate(sampler.sample(p0, iterations=1000)):
         if i%10 == 0:
             print('Done with burn-in iteration {:03d}'.format(i))
     return sampler
@@ -234,7 +234,7 @@ def plot(pars, t1, v1, v1_err, t2, v2, v2_err):
 def read_primary_chains():
     # Read in MCMC chains for the primary star parameters
     home = os.environ['HOME']
-    fname = '{}/School/Research/McdonaldData/PlanetData/RV_fit/mcmc_samples/psidraa_els.txt'.format(home)
+    fname = '{}/School/Research/McDonaldData/PlanetData/RV_fit/mcmc_samples/psidraa_els.txt'.format(home)
     chain = pd.read_fwf(fname)
 
     # Unit conversion
