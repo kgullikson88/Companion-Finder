@@ -59,12 +59,12 @@ def fit_partial(T0, P, e, K1, w, t, rv2, rv2_err):
 
 def lnlike_full(pars, t1, v1, v1_err, t2, v2, v2_err):
     K1, K2, P, T0, w, e, dv1, dv2, lnf = pars
-    rv1_pred = np.array([get_rv(T0=T0, P=P, e=e, K1=K1, w=w, t=t) for t in t1])
-    rv2_pred = -np.array([get_rv(T0=T0, P=P, e=e, K1=K2, w=w, t=t) for t in t2])
+    rv1_pred = get_rv(T0=T0, P=P, e=e, K1=K1, w=w, t=t1) + dv1
+    rv2_pred = -get_rv(T0=T0, P=P, e=e, K1=K2, w=w, t=t2)
     
     inv_sigma2_1 = 1.0/v1_err**2
     inv_sigma2_2 = 1.0/(np.exp(lnf)*v2_err**2)
-    s1 = np.nansum((rv1_pred - (v1-dv1))**2 * inv_sigma2_1 - np.log(inv_sigma2_1))
+    s1 = np.nansum((rv1_pred - v1)**2 * inv_sigma2_1 - np.log(inv_sigma2_1))
     s2 = np.nansum((rv2_pred - (v2 - rv2_pred*K1/K2 - dv2))**2 * inv_sigma2_2 - np.log(inv_sigma2_2))
     #print(s1)
     #print(s2)
@@ -76,12 +76,12 @@ def lnprior_full(pars):
     """
     K1, K2, P, T0, w, e, dv1, dv2, lnf = pars
     #if 4 < K1 < 6 and K2 > K1 and 0.6 < e < 0.7 and 6000 < P < 8500 and 0.35 < w < 0.7 and -20 < dv1 < 20 and -20 < dv2 < 20 and lnf < 0:
-    #if 3 < K1 < 7 and K2 > K1 and 0.2 < e < 1. and 5000 < P < 9000 and 0.15 < w < 0.9 and -20 < dv1 < 20 and -20 < dv2 < 20 and lnf < 0:
-    #    return 0.0
-    if K2 > K1 and -20 < dv1 < 20 and -20 < dv2 < 20 and lnf < 0:
-        return -0.5*((K1-5.113)**2/0.1**2 + (P-7345)**2/1000**2 + (T0-2449824)**2/1000**2 + 
-                     (w-0.506)**2/0.035**2 + (e-0.669)**2/0.016**2 + 
-                     np.log(2*np.pi*(0.1**2 + 1000**2 + 1000**2 + 0.035**2 + 0.016**2)))
+    if 3 < K1 < 7 and K2 > K1 and 0.2 < e < 1. and 5000 < P < 9000 and 0.15 < w < 0.9 and -20 < dv1 < 20 and -20 < dv2 < 20 and lnf < 0:
+        return 0.0
+    #if K2 > K1 and -20 < dv1 < 20 and -20 < dv2 < 20 and lnf < 0:
+    #    return -0.5*((K1-5.113)**2/0.1**2 + (P-7345)**2/1000**2 + (T0-2449824)**2/1000**2 + 
+    #                 (w-0.506)**2/0.035**2 + (e-0.669)**2/0.016**2 + 
+    #                 np.log(2*np.pi*(0.1**2 + 1000**2 + 1000**2 + 0.035**2 + 0.016**2)))
     return -np.inf
 
 def lnprob_full(pars, t1, v1, v1_err, t2, v2, v2_err):
@@ -101,10 +101,13 @@ def full_sb2_fit(t1, rv1, rv1_err, t2, rv2, rv2_err):
     sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob_full, args=(t1, rv1, rv1_err, t2, rv2, rv2_err), threads=2)
 
     # Run for a while
-    for i, result in enumerate(sampler.sample(p0, iterations=2000)):
+    for i, result in enumerate(sampler.sample(p0, iterations=1000)):
         if i%10 == 0:
             print('Done with burn-in iteration {:03d}'.format(i))
 
+    return sampler
+
+    """
     # Get the best chain position and resample from there
     pos, lnp, state = result
     best_pars = pos[np.argmax(lnp)]
@@ -117,6 +120,7 @@ def full_sb2_fit(t1, rv1, rv1_err, t2, rv2, rv2_err):
             print('Done with production iteration {:03d}'.format(i))
 
     return sampler
+    """
 
 
 
