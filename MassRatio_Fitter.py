@@ -64,8 +64,8 @@ def lnlike_full(pars, t1, v1, v1_err, t2, v2, v2_err):
     
     inv_sigma2_1 = 1.0/v1_err**2
     inv_sigma2_2 = 1.0/(np.exp(lnf)*v2_err**2)
-    s1 = np.nansum((rv1_pred - v1)**2 * inv_sigma2_1 - np.log(inv_sigma2_1))
-    s2 = np.nansum((rv2_pred - (v2 - rv2_pred*K1/K2 - dv2))**2 * inv_sigma2_2 - np.log(inv_sigma2_2))
+    s1 = np.nansum((rv1_pred - v1)**2 * inv_sigma2_1 - np.log(inv_sigma2_1/(2*np.pi)))
+    s2 = np.nansum((rv2_pred - (v2 - rv2_pred*K1/K2 - dv2))**2 * inv_sigma2_2 - np.log(inv_sigma2_2/(2*np.pi)))
     #print(s1)
     #print(s2)
     return -0.5*(s1+s2)
@@ -89,7 +89,7 @@ def lnprob_full(pars, t1, v1, v1_err, t2, v2, v2_err):
     return lp + lnlike_full(pars, t1, v1, v1_err, t2, v2, v2_err) if np.isfinite(lp) else -np.inf
 
 
-def full_sb2_fit(t1, rv1, rv1_err, t2, rv2, rv2_err):
+def full_sb2_fit(t1, rv1, rv1_err, t2, rv2, rv2_err, Niter=1000):
     """
     Do a full SB2 fit.
     """
@@ -101,9 +101,9 @@ def full_sb2_fit(t1, rv1, rv1_err, t2, rv2, rv2_err):
     sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob_full, args=(t1, rv1, rv1_err, t2, rv2, rv2_err), threads=2)
 
     # Run for a while
-    for i, result in enumerate(sampler.sample(p0, iterations=1000)):
+    for i, result in enumerate(sampler.sample(p0, iterations=Niter)):
         if i%10 == 0:
-            print('Done with burn-in iteration {:03d}'.format(i))
+            print('Done with iteration {:03d}'.format(i))
 
     return sampler
 
