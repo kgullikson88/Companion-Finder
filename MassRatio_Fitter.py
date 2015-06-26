@@ -182,7 +182,7 @@ def sb1_fit(t1, rv1, rv1_err):
     """
 
 
-def plot(pars, t1, v1, v1_err, t2, v2, v2_err):
+def plot(pars, t1, v1, v1_err, t2, v2, v2_err, resids=True):
     K1, K2, P, T0, w, e, dv1, dv2, lnf = pars
     rv1_pred = get_rv(T0=T0, P=P, e=e, K1=K1, w=w, t=t1)
     rv2_pred = -get_rv(T0=T0, P=P, e=e, K1=K2, w=w, t=t2)
@@ -195,43 +195,59 @@ def plot(pars, t1, v1, v1_err, t2, v2, v2_err):
     s1 = np.nansum((rv1_pred - (v1-dv1))**2 * inv_sigma2_1 - np.log(inv_sigma2_1))
     s2 = np.nansum((rv2_pred - (v2 - rv2_pred*K1/K2 - dv2))**2 * inv_sigma2_2 - np.log(inv_sigma2_2))
     
-    #fig, ax = plt.subplots()
-    fig = plt.figure()
-    gs = gridspec.GridSpec(5, 1)
-    top = plt.subplot(gs[:3])
-    resid1 = plt.subplot(gs[3], sharex=top)
-    resid2 = plt.subplot(gs[4], sharex=top)
-    fig.subplots_adjust(bottom=0.15, left=0.15, hspace=0.0)
-    
-    top.errorbar(t1, v1-dv1, yerr=v1_err, fmt='r^', label='Primary')
-    top.errorbar(t2, v2 - rv2_pred*K1/K2 - dv2, yerr=v2_err*np.exp(lnf/2.), fmt='ko', label='Secondary')
-    top.plot(tplot, rv1_plot, 'r-', alpha=0.5)
-    top.plot(tplot, rv2_plot, 'k-', alpha=0.5)
-    
-    resid1.scatter(t1, v1-dv1 - rv1_pred)
-    resid1.plot(t1, np.zeros(len(t1)), 'r--')
-    resid1.set_ylabel('O-C (rv1)')
-    print('RMS scatter on primary = {:.3f} km/s'.format(np.std(v1-dv1-rv1_pred)))
-    
-    resid2.scatter(t2, v2 - rv2_pred*K1/K2 - dv2 - rv2_pred)
-    resid2.plot(t2, np.zeros(len(t2)), 'r--')
-    resid2.set_ylabel('O-C (rv2)')
-    print('RMS scatter on secondary = {:.3f} km/s'.format(np.std(v2 - rv2_pred*K1/K2 - dv2 - rv2_pred)))
-
-    top.axes.get_xaxis().set_visible(False)
-    resid1.axes.get_xaxis().set_visible(False)
-    
-    resid2.set_xlabel('JD - 2450000')
-    top.set_ylabel('RV (km/s)')
-    leg = top.legend(loc='best', fancybox=True)
-    
     def tick_formatter(x, pos):
         return "{:.0f}".format(x - 2450000)
-
     MyFormatter = FuncFormatter(tick_formatter)
-    top.xaxis.set_major_formatter(MyFormatter)
+    
+    fig = plt.figure()
+    if resids:
+        gs = gridspec.GridSpec(5, 1)
+        top = plt.subplot(gs[:3])
+        resid1 = plt.subplot(gs[3], sharex=top)
+        resid2 = plt.subplot(gs[4], sharex=top)
+        fig.subplots_adjust(bottom=0.15, left=0.15, hspace=0.0)
+        
+        top.errorbar(t1, v1-dv1, yerr=v1_err, fmt='r^', label='Primary')
+        top.errorbar(t2, v2 - rv2_pred*K1/K2 - dv2, yerr=v2_err*np.exp(lnf/2.), fmt='ko', label='Secondary')
+        top.plot(tplot, rv1_plot, 'r-', alpha=0.5)
+        top.plot(tplot, rv2_plot, 'k-', alpha=0.5)
+        
+        resid1.scatter(t1, v1-dv1 - rv1_pred)
+        resid1.plot(t1, np.zeros(len(t1)), 'r--')
+        resid1.set_ylabel('O-C (rv1)')
+        print('RMS scatter on primary = {:.3f} km/s'.format(np.std(v1-dv1-rv1_pred)))
+        
+        resid2.scatter(t2, v2 - rv2_pred*K1/K2 - dv2 - rv2_pred)
+        resid2.plot(t2, np.zeros(len(t2)), 'r--')
+        resid2.set_ylabel('O-C (rv2)')
+        print('RMS scatter on secondary = {:.3f} km/s'.format(np.std(v2 - rv2_pred*K1/K2 - dv2 - rv2_pred)))
 
-    return fig, [top, resid1, resid2]
+        top.axes.get_xaxis().set_visible(False)
+        resid1.axes.get_xaxis().set_visible(False)
+        
+        resid2.set_xlabel('JD - 2450000')
+        top.set_ylabel('RV (km/s)')
+        leg = top.legend(loc='best', fancybox=True)
+        
+        top.xaxis.set_major_formatter(MyFormatter)
+
+        axes = [top, resid1, resid2]
+
+    else:
+        ax = fig.add_subplot(111)
+        ax.errorbar(t1, v1-dv1, yerr=v1_err, fmt='r^', label='Primary')
+        ax.errorbar(t2, v2 - rv2_pred*K1/K2 - dv2, yerr=v2_err*np.exp(lnf/2.), fmt='ko', label='Secondary')
+        ax.plot(tplot, rv1_plot, 'r-', alpha=0.5)
+        ax.plot(tplot, rv2_plot, 'k-', alpha=0.5)
+
+        ax.xaxis.set_major_formatter(MyFormatter)
+        ax.set_xlabel('JD - 2450000')
+        ax.set_ylabel('RV (km/s)')
+        leg = ax.legend(loc='best', fancybox=True)
+
+        axes = [ax]
+
+    return fig, axes
 
 
 
