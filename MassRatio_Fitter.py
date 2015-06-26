@@ -58,12 +58,12 @@ def fit_partial(T0, P, e, K1, w, t, rv2, rv2_err):
 
 
 def lnlike_full(pars, t1, v1, v1_err, t2, v2, v2_err):
-    K1, K2, P, T0, w, e, dv1, dv2, lnf, noise1, noise2 = pars
+    K1, K2, P, T0, w, e, dv1, dv2, lnf, noise1 = pars
     rv1_pred = get_rv(T0=T0, P=P, e=e, K1=K1, w=w, t=t1) + dv1
     rv2_pred = -get_rv(T0=T0, P=P, e=e, K1=K2, w=w, t=t2)
     
     inv_sigma2_1 = 1.0/(v1_err**2 + np.exp(noise1)**2)
-    inv_sigma2_2 = 1.0/(np.exp(lnf)*v2_err**2 + np.exp(noise2)**2)
+    inv_sigma2_2 = 1.0/(np.exp(lnf)*v2_err**2)
     s1 = np.nansum((rv1_pred - v1)**2 * inv_sigma2_1 - np.log(inv_sigma2_1/(2*np.pi)))
     s2 = np.nansum((rv2_pred - (v2 - rv2_pred*K1/K2 - dv2))**2 * inv_sigma2_2 - np.log(inv_sigma2_2/(2*np.pi)))
     #print(s1)
@@ -74,7 +74,7 @@ def lnlike_full(pars, t1, v1, v1_err, t2, v2, v2_err):
 def lnprior_full(pars):
     """Gaussian prior
     """
-    K1, K2, P, T0, w, e, dv1, dv2, lnf, noise1, noise2 = pars
+    K1, K2, P, T0, w, e, dv1, dv2, lnf, noise1 = pars
     #if 4 < K1 < 6 and K2 > K1 and 0.6 < e < 0.7 and 6000 < P < 8500 and 0.35 < w < 0.7 and -20 < dv1 < 20 and -20 < dv2 < 20 and lnf < 0:
     if 3 < K1 < 7 and K2 > K1 and 0.2 < e < 1. and 5000 < P < 9000 and 0.15 < w < 0.9 and -20 < dv1 < 20 and -20 < dv2 < 20 and lnf < 0:
         return 0.0
@@ -93,7 +93,7 @@ def full_sb2_fit(t1, rv1, rv1_err, t2, rv2, rv2_err, Niter=1000):
     """
     Do a full SB2 fit.
     """
-    initial_pars = [5.113, 5.113/0.469, 7345, 2449824, 29*np.pi/180., 0.669, 4.018, -5.38, -3.61, -1.0, -1.0]
+    initial_pars = [5.113, 5.113/0.469, 7345, 2449824, 29*np.pi/180., 0.669, 4.018, -5.38, -3.61, -1.0]
 
     ndim = len(initial_pars)
     nwalkers = 300
@@ -183,7 +183,7 @@ def sb1_fit(t1, rv1, rv1_err):
 
 
 def plot(pars, t1, v1, v1_err, t2, v2, v2_err, resids=True):
-    K1, K2, P, T0, w, e, dv1, dv2, lnf = pars
+    K1, K2, P, T0, w, e, dv1, dv2, lnf, noise = pars
     rv1_pred = get_rv(T0=T0, P=P, e=e, K1=K1, w=w, t=t1)
     rv2_pred = -get_rv(T0=T0, P=P, e=e, K1=K2, w=w, t=t2)
     tplot = np.linspace(min(min(t1), min(t2)), max(max(t2), max(t2)), 100)
