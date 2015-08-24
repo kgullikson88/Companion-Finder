@@ -2,16 +2,18 @@
 Fit the mass-ratio using emcee
 """
 
-import numpy as np 
+import os
+
+import numpy as np
 import emcee
-import matplotlib.pyplot as plt 
+import matplotlib.pyplot as plt
 import seaborn as sns
-import triangle
-from CombineCCFs import get_rv
 from matplotlib import gridspec
 from matplotlib.ticker import FuncFormatter
-import os
 import pandas as pd
+
+from CombineCCFs import get_rv
+
 
 sns.set_context('paper', font_scale=2.0)
 
@@ -66,6 +68,7 @@ def lnlike_full(pars, t1, v1, v1_err, t2, v2, v2_err):
     inv_sigma2_2 = 1.0/(np.exp(lnf)*v2_err**2)
     s1 = np.nansum((rv1_pred - v1)**2 * inv_sigma2_1 - np.log(inv_sigma2_1/(2*np.pi)))
     s2 = np.nansum((rv2_pred - (v2 - rv2_pred*K1/K2 - dv2))**2 * inv_sigma2_2 - np.log(inv_sigma2_2/(2*np.pi)))
+    # s2 = np.nansum((rv2_pred - (v2 - dv2))**2 * inv_sigma2_2 - np.log(inv_sigma2_2/(2*np.pi)))
     #print(s1)
     #print(s2)
     return -0.5*(s1+s2)
