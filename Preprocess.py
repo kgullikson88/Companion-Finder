@@ -76,6 +76,8 @@ def SortFiles():
     # Get the time for all RV files
     for fname in RV_files:
         header = fits.getheader(fname)
+        #if header['JD'] < 2457151:
+        #    continue
         time_obs = header['date-obs'].strip() + "T" + header['UT'].strip()
         t = time.Time(time_obs, format='isot', scale='utc').jd
         object_files.append((fname, t))
@@ -167,7 +169,7 @@ def DoAll():
                 o.y /= new_i2.y/new_i2.cont
             corrected_orders.append(o.copy())
 
-        #OutputFile(corrected_orders, object_file, outputfile)
+        OutputFile(corrected_orders, object_file, outputfile)
 
 
 
