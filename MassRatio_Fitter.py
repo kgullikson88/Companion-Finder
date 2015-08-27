@@ -96,7 +96,8 @@ def full_sb2_fit(t1, rv1, rv1_err, t2, rv2, rv2_err, Niter=1000):
     """
     Do a full SB2 fit.
     """
-    initial_pars = [5.113, 5.113/0.469, 7345, 2449824, 29*np.pi/180., 0.669, 4.018, -5.38, -3.61, -1.0]
+    #initial_pars = [5.113, 5.113/0.469, 7345, 2449824, 29*np.pi/180., 0.669, 4.018, -5.38, -3.61, -1.0]
+    initial_pars = [5.181, 10.786, 6763, 2450400, 32.7*np.pi/180., .679, 4.102, -5.47, -3.25, -2.6]
 
     ndim = len(initial_pars)
     nwalkers = 300
@@ -210,7 +211,7 @@ def plot(pars, t1, v1, v1_err, t2, v2, v2_err, resids=True):
         resid2 = plt.subplot(gs[4], sharex=top)
         fig.subplots_adjust(bottom=0.15, left=0.15, hspace=0.0)
         
-        top.errorbar(t1, v1-dv1, yerr=v1_err, fmt='r^', label='Primary')
+        top.errorbar(t1, v1-dv1, yerr=np.sqrt(v1_err**2 + np.exp(noise)), fmt='r^', label='Primary')
         top.errorbar(t2, v2 - rv2_pred*K1/K2 - dv2, yerr=v2_err*np.exp(lnf/2.), fmt='ko', label='Secondary')
         top.plot(tplot, rv1_plot, 'r-', alpha=0.5)
         top.plot(tplot, rv2_plot, 'k-', alpha=0.5)
@@ -249,6 +250,12 @@ def plot(pars, t1, v1, v1_err, t2, v2, v2_err, resids=True):
         leg = ax.legend(loc='best', fancybox=True)
 
         axes = [ax]
+
+    # Calculate chi-squared
+    chi2 = (np.sum((v1-dv1 - rv1_pred)**2 / (v1_err**2 + np.exp(noise))) + 
+           np.sum((v2 - rv2_pred*K1/K2 - dv2 - rv2_pred)**2 / (v2_err**2 * np.exp(lnf))))
+    N = len(v1) + len(v2)
+    print('X^2 = {:.2f}\nN = {}'.format(chi2, N))
 
     return fig, axes
 
