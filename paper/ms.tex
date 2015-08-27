@@ -45,59 +45,59 @@ Here, we use all of our spectra of $\psi^1$ Dra A to search directly for the spe
 \label{sec:obs}
 All data were taken at the 2.7m Harlan J. Smith Telescope at McDonald observatory using the 2dcoude echelle spectrograph \citep{TS23} at a resolving power $R\equiv \frac{\lambda}{\Delta \lambda} = 60000$. The starlight was filtered through a temperature-stabilized $I_2$ cell to imprint many sharp absorption lines on each spectrum to use for both a precise velocity metric \citep{Butler1996} and to model the instrument profile \citep{Endl2000}. The raw CCD data were reduced with standard IRAF\footnote{IRAF is distributed by the National Optical Astronomy Observatories, which are operated by the Association of Universities for Research in Astronomy, Inc., under cooperative agreement with the National Science Foundation.} tasks, and include steps for overscan trimming, bad pixel processing, bias frame subtraction, scattered light removal, flat field division, order extraction, and wavelength solution fitting using a Th-Ar calibration lamp spectrum. Particularly strong cosmic ray hits were removed manually by interpolating across nearby pixels.
 
-We used the \emph{Austral} code \citep{Endl2000} to measure the differential radial velocity of $\psi^1$ Dra A at each observation. We provide the velocity measurements after shifting into the system velocity rest frame in Table \ref{tab:rv_data}. The velocity shift necessary to convert from the differential radial velocities to this frame is found in Section \ref{sec:orbit}. Table 1 also gives the measurements of the companion radial velocity (described in the next section).
+We used the \emph{Austral} code \citep{Endl2000} to measure the differential radial velocity of $\psi^1$ Dra A at each observation. We provide the raw velocity measurements in Table \ref{tab:rv_data}, as well as the velocities shifted into the system velocity rest frame. The velocity shift necessary to convert from the differential radial velocities to this frame is found in Section \ref{sec:orbit}. Table \ref{tab:rv_data} also gives the measurements of the companion radial velocity (described in the next section).
 
 
 
-\begin{deluxetable}{lrrrr}
+\begin{deluxetable}{lrrrrrr}
 \tabletypesize{\footnotesize}
 \tablewidth{0pt}
 %\tablenum{1}
 \tablecaption{Observations of $\psi^1$ Dra A \label{tab:rv_data}}
 \tablehead{
-\colhead{Julian Date} & \colhead{ $v_1$ }  & \colhead{$\sigma_{v_1}$ } & \colhead{ $v_2$ }  & \colhead{$\sigma_{v_2}$ }  \\
- & \colhead{(m/s)}  & \colhead{(m/s)} & \colhead{(m/s)}  & \colhead{(m/s)} }
+\colhead{Julian Date} & \multicolumn{3}{c}{Primary RV (m/s)} & \multicolumn{3}{c}{Secondary RV (m/s)} \\
+& \colhead{raw} & \colhead{shifted} & \colhead{$\sigma$}  & \colhead{raw} & \colhead{shifted}  & \colhead{$\sigma$} }
 
 \startdata
 
- 2451809.66 &  -2.174 &   0.013 &  \nodata &  \nodata \\
- 2451809.67 &  -2.172 &   0.014 &  \nodata &  \nodata \\
- 2452142.68 &  -2.259 &   0.012 &  \nodata &  \nodata \\
- 2453319.64 &  -1.668 &   0.011 &  \nodata &  \nodata \\
- 2453585.85 &  -1.542 &   0.010 &  \nodata &  \nodata \\
- 2453585.88 &  -1.551 &   0.011 &  \nodata &  \nodata \\
- 2453634.64 &  -1.446 &   0.011 &  \nodata &  \nodata \\
- 2453635.62 &  -1.547 &   0.009 &  \nodata &  \nodata \\
- 2453655.64 &  -1.390 &   0.009 &  \nodata &  \nodata \\
- 2453655.64 &  -1.321 &   0.027 &  \nodata &  \nodata \\
- 2453689.54 &  -1.436 &   0.008 &  \nodata &  \nodata \\
- 2453907.85 &  -1.141 &   0.011 &  \nodata &  \nodata \\
- 2453928.80 &  -1.243 &   0.012 &  \nodata &  \nodata \\
- 2454019.60 &  -1.171 &   0.012 &  \nodata &  \nodata \\
- 2454279.75 &  -1.033 &   0.011 &  \nodata &  \nodata \\
- 2454279.76 &  -1.044 &   0.010 &  \nodata &  \nodata \\
- 2454309.79 &  -1.080 &   0.013 &  \nodata &  \nodata \\
- 2454345.63 &  -0.830 &   0.010 &  \nodata &  \nodata \\
- 2454401.56 &  -0.945 &   0.009 &  \nodata &  \nodata \\
- 2454662.93 &  -0.752 &   0.015 &     0.36 &     0.37 \\
- 2454665.77 &  -0.615 &   0.014 &     0.75 &     0.35 \\
- 2454665.77 &  -0.609 &   0.015 &     0.64 &     0.36 \\
- 2454730.71 &  -0.644 &   0.014 &     0.68 &     0.36 \\
- 2455100.57 &  -0.226 &   0.016 &     0.04 &     0.44 \\
- 2455100.58 &  -0.210 &   0.014 &     0.16 &     0.44 \\
- 2455398.75 &   0.108 &   0.015 &    -0.89 &     0.51 \\
- 2455790.72 &   0.876 &   0.021 &    -2.34 &     0.67 \\
- 2455869.58 &   1.111 &   0.017 &    -1.66 &     0.60 \\
- 2455910.57 &   1.221 &   0.018 &    -1.82 &     0.63 \\
- 2455992.02 &   1.437 &   0.012 &    -2.22 &     0.65 \\
- 2456016.93 &   1.558 &   0.014 &    -2.37 &     0.62 \\
- 2456106.78 &   1.683 &   0.015 &    -3.24 &     0.67 \\
- 2456138.84 &   1.844 &   0.020 &    -3.51 &     0.73 \\
- 2456145.65 &   1.846 &   0.025 &    -4.14 &     0.80 \\
- 2456145.66 &   1.828 &   0.018 &    -4.19 &     0.79 \\
- 2456145.66 &   1.864 &   0.018 &    -3.91 &     0.79 \\
- 2456173.73 &   1.854 &   0.018 &    -3.48 &     0.75 \\
- 2456401.97 &   2.864 &   0.014 &    -5.87 &     0.69 \\
+ 2451809.66 &   1.927 &  -2.174 &   0.013 &  \nodata &  \nodata &  \nodata \\
+ 2451809.67 &   1.929 &  -2.172 &   0.014 &  \nodata &  \nodata &  \nodata \\
+ 2452142.68 &   1.841 &  -2.259 &   0.012 &  \nodata &  \nodata &  \nodata \\
+ 2453319.64 &   2.433 &  -1.668 &   0.011 &  \nodata &  \nodata &  \nodata \\
+ 2453585.85 &   2.559 &  -1.542 &   0.010 &  \nodata &  \nodata &  \nodata \\
+ 2453585.88 &   2.550 &  -1.551 &   0.011 &  \nodata &  \nodata &  \nodata \\
+ 2453634.64 &   2.654 &  -1.446 &   0.011 &  \nodata &  \nodata &  \nodata \\
+ 2453635.62 &   2.554 &  -1.547 &   0.009 &  \nodata &  \nodata &  \nodata \\
+ 2453655.64 &   2.711 &  -1.390 &   0.009 &  \nodata &  \nodata &  \nodata \\
+ 2453655.64 &   2.780 &  -1.321 &   0.027 &  \nodata &  \nodata &  \nodata \\
+ 2453689.54 &   2.665 &  -1.436 &   0.008 &  \nodata &  \nodata &  \nodata \\
+ 2453907.85 &   2.960 &  -1.141 &   0.011 &  \nodata &  \nodata &  \nodata \\
+ 2453928.80 &   2.858 &  -1.243 &   0.012 &  \nodata &  \nodata &  \nodata \\
+ 2454019.60 &   2.930 &  -1.171 &   0.012 &  \nodata &  \nodata &  \nodata \\
+ 2454279.75 &   3.068 &  -1.033 &   0.011 &  \nodata &  \nodata &  \nodata \\
+ 2454279.76 &   3.056 &  -1.044 &   0.010 &  \nodata &  \nodata &  \nodata \\
+ 2454309.79 &   3.021 &  -1.080 &   0.013 &  \nodata &  \nodata &  \nodata \\
+ 2454345.63 &   3.270 &  -0.830 &   0.010 &  \nodata &  \nodata &  \nodata \\
+ 2454401.56 &   3.155 &  -0.945 &   0.009 &  \nodata &  \nodata &  \nodata \\
+ 2454662.93 &   3.349 &  -0.752 &   0.015 &    -4.34 &     0.36 &     0.37 \\
+ 2454665.77 &   3.486 &  -0.615 &   0.014 &    -3.95 &     0.75 &     0.35 \\
+ 2454665.77 &   3.492 &  -0.609 &   0.015 &    -4.06 &     0.64 &     0.36 \\
+ 2454730.71 &   3.457 &  -0.644 &   0.014 &    -4.09 &     0.68 &     0.36 \\
+ 2455100.57 &   3.875 &  -0.226 &   0.016 &    -5.14 &     0.04 &     0.44 \\
+ 2455100.58 &   3.891 &  -0.210 &   0.014 &    -5.02 &     0.16 &     0.44 \\
+ 2455398.75 &   4.209 &   0.108 &   0.015 &    -6.49 &    -0.89 &     0.51 \\
+ 2455790.72 &   4.977 &   0.876 &   0.021 &    -8.65 &    -2.34 &     0.67 \\
+ 2455869.58 &   5.211 &   1.111 &   0.017 &    -8.14 &    -1.66 &     0.60 \\
+ 2455910.57 &   5.321 &   1.221 &   0.018 &    -8.40 &    -1.82 &     0.63 \\
+ 2455992.02 &   5.538 &   1.437 &   0.012 &    -9.01 &    -2.22 &     0.65 \\
+ 2456016.93 &   5.659 &   1.558 &   0.014 &    -9.23 &    -2.37 &     0.62 \\
+ 2456106.78 &   5.784 &   1.683 &   0.015 &   -10.36 &    -3.24 &     0.67 \\
+ 2456138.84 &   5.944 &   1.844 &   0.020 &   -10.73 &    -3.51 &     0.73 \\
+ 2456145.65 &   5.947 &   1.846 &   0.025 &   -11.38 &    -4.14 &     0.80 \\
+ 2456145.66 &   5.929 &   1.828 &   0.018 &   -11.43 &    -4.19 &     0.79 \\
+ 2456145.66 &   5.965 &   1.864 &   0.018 &   -11.15 &    -3.91 &     0.79 \\
+ 2456173.73 &   5.955 &   1.854 &   0.018 &   -10.82 &    -3.48 &     0.75 \\
+ 2456401.97 &   6.964 &   2.864 &   0.014 &   -14.11 &    -5.87 &     0.69 \\
  
 \enddata
 
@@ -106,59 +106,58 @@ We used the \emph{Austral} code \citep{Endl2000} to measure the differential rad
  
 
 
-\begin{deluxetable}{lrrrr}
+\begin{deluxetable}{lrrrrrr}
 \tabletypesize{\footnotesize}
 \tablewidth{0pt}
 \tablenum{1}
 \tablecaption{Observations of $\psi^1$ Dra A (continued)}
 \tablehead{
-\colhead{Julian Date} & \colhead{ $v_1$ }  & \colhead{$\sigma_{v_1}$ } & \colhead{ $v_2$ }  & \colhead{$\sigma_{v_2}$ }  \\
- & \colhead{(m/s)}  & \colhead{(m/s)} & \colhead{(m/s)}  & \colhead{(m/s)} }
+\colhead{Julian Date} & \multicolumn{3}{c}{Primary RV (m/s)} & \multicolumn{3}{c}{Secondary RV (m/s)} \\
+& \colhead{raw} & \colhead{shifted} & \colhead{$\sigma$}  & \colhead{raw} & \colhead{shifted}  & \colhead{$\sigma$} }
 
 \startdata
 
- 2456401.97 &   2.841 &   0.012 &    -6.15 &     0.68 \\
- 2456433.74 &   3.138 &   0.013 &    -6.14 &     0.62 \\
- 2456433.74 &   3.108 &   0.012 &    -6.21 &     0.65 \\
- 2456435.87 &   3.108 &   0.015 &    -6.33 &     0.64 \\
- 2456435.87 &   3.104 &   0.015 &    -6.68 &     0.64 \\
- 2456461.87 &   3.257 &   0.012 &    -6.42 &     0.63 \\
- 2456461.88 &   3.250 &   0.015 &    -6.11 &     0.65 \\
- 2456461.88 &   3.225 &   0.016 &    -6.06 &     0.61 \\
- 2456465.80 &   3.196 &   0.014 &    -6.18 &     0.53 \\
- 2456497.86 &   3.473 &   0.019 &    -7.13 &     0.73 \\
- 2456519.62 &   3.664 &   0.015 &    -7.93 &     0.59 \\
- 2456525.66 &   3.624 &   0.017 &    -7.38 &     0.64 \\
- 2456560.58 &   3.711 &   0.013 &    -7.22 &     0.90 \\
- 2456564.59 &   3.680 &   0.015 &    -7.05 &     0.86 \\
- 2456613.55 &   3.988 &   0.016 &    -6.51 &     0.91 \\
- 2456614.58 &   4.038 &   0.012 &    -7.06 &     0.85 \\
- 2456755.98 &   5.208 &   0.014 &   -10.84 &     0.74 \\
- 2456759.97 &   5.265 &   0.015 &   -11.28 &     0.76 \\
- 2456784.84 &   5.502 &   0.017 &   -11.69 &     0.81 \\
- 2456816.67 &   5.794 &   0.014 &   -12.17 &     0.74 \\
- 2456816.67 &   5.806 &   0.015 &   -12.49 &     0.72 \\
- 2456860.73 &   6.301 &   0.016 &   -13.97 &     0.88 \\
- 2456860.73 &   6.321 &   0.015 &   -14.11 &     0.83 \\
- 2456885.62 &   6.507 &   0.015 &   -15.29 &     0.84 \\
- 2456938.63 &   7.089 &   0.016 &   -16.77 &     1.03 \\
- 2456938.64 &   7.072 &   0.015 &   -16.45 &     0.96 \\
- 2457092.02 &   8.013 &   0.015 &   -18.09 &     1.00 \\
- 2457109.85 &   7.976 &   0.015 &   -19.40 &     1.10 \\
- 2457118.96 &   7.886 &   0.016 &   -17.82 &     0.90 \\
- 2457150.92 &   7.584 &   0.017 &  \nodata &  \nodata \\
- 2457174.96 &   7.167 &   0.017 &   -16.13 &     0.81 \\
- 2457214.83 &   6.139 &   0.017 &   -13.16 &     0.82 \\
- 2457214.84 &   6.152 &   0.016 &   -13.85 &     0.90 \\
- 2457216.73 &   6.119 &   0.016 &   -13.66 &     0.86 \\
- 2457216.73 &   6.128 &   0.015 &   -13.69 &     0.80 \\
- 2457245.60 &   5.201 &   0.016 &   -11.52 &     0.77 \\
- 2457245.61 &   5.199 &   0.016 &   -11.16 &     0.72 \\
- 2457248.61 &   5.237 &   0.017 &   -11.05 &     0.70 \\
- 
+ 2456401.97 &   6.941 &   2.841 &   0.012 &   -14.39 &    -6.15 &     0.68 \\
+ 2456433.74 &   7.238 &   3.138 &   0.013 &   -14.54 &    -6.14 &     0.62 \\
+ 2456433.74 &   7.209 &   3.108 &   0.012 &   -14.61 &    -6.21 &     0.65 \\
+ 2456435.87 &   7.208 &   3.108 &   0.015 &   -14.73 &    -6.33 &     0.64 \\
+ 2456435.87 &   7.205 &   3.104 &   0.015 &   -15.08 &    -6.68 &     0.64 \\
+ 2456461.87 &   7.358 &   3.257 &   0.012 &   -14.96 &    -6.42 &     0.63 \\
+ 2456461.88 &   7.351 &   3.250 &   0.015 &   -14.65 &    -6.11 &     0.65 \\
+ 2456461.88 &   7.326 &   3.225 &   0.016 &   -14.60 &    -6.06 &     0.61 \\
+ 2456465.80 &   7.297 &   3.196 &   0.014 &   -14.74 &    -6.18 &     0.53 \\
+ 2456497.86 &   7.574 &   3.473 &   0.019 &   -15.86 &    -7.13 &     0.73 \\
+ 2456519.62 &   7.765 &   3.664 &   0.015 &   -16.78 &    -7.93 &     0.59 \\
+ 2456525.66 &   7.725 &   3.624 &   0.017 &   -16.27 &    -7.38 &     0.64 \\
+ 2456560.58 &   7.812 &   3.711 &   0.013 &   -16.32 &    -7.22 &     0.90 \\
+ 2456564.59 &   7.781 &   3.680 &   0.015 &   -16.18 &    -7.05 &     0.86 \\
+ 2456613.55 &   8.089 &   3.988 &   0.016 &   -15.96 &    -6.51 &     0.91 \\
+ 2456614.58 &   8.139 &   4.038 &   0.012 &   -16.52 &    -7.06 &     0.85 \\
+ 2456755.98 &   9.308 &   5.208 &   0.014 &   -21.44 &   -10.84 &     0.74 \\
+ 2456759.97 &   9.366 &   5.265 &   0.015 &   -21.91 &   -11.28 &     0.76 \\
+ 2456784.84 &   9.603 &   5.502 &   0.017 &   -22.56 &   -11.69 &     0.81 \\
+ 2456816.67 &   9.895 &   5.794 &   0.014 &   -23.36 &   -12.17 &     0.74 \\
+ 2456816.67 &   9.907 &   5.806 &   0.015 &   -23.68 &   -12.49 &     0.72 \\
+ 2456860.73 &  10.402 &   6.301 &   0.016 &   -25.64 &   -13.97 &     0.88 \\
+ 2456860.73 &  10.421 &   6.321 &   0.015 &   -25.77 &   -14.11 &     0.83 \\
+ 2456885.62 &  10.607 &   6.507 &   0.015 &   -27.23 &   -15.29 &     0.84 \\
+ 2456938.63 &  11.189 &   7.089 &   0.016 &   -29.30 &   -16.77 &     1.03 \\
+ 2456938.64 &  11.173 &   7.072 &   0.015 &   -28.99 &   -16.45 &     0.96 \\
+ 2457092.02 &  12.114 &   8.013 &   0.015 &   -31.57 &   -18.09 &     1.00 \\
+ 2457109.85 &  12.077 &   7.976 &   0.015 &   -32.79 &   -19.40 &     1.10 \\
+ 2457118.96 &  11.987 &   7.886 &   0.016 &   -31.14 &   -17.82 &     0.90 \\
+ 2457150.92 &  11.685 &   7.584 &   0.017 &  \nodata &  \nodata &  \nodata \\
+ 2457174.96 &  11.267 &   7.167 &   0.017 &   -28.58 &   -16.13 &     0.81 \\
+ 2457214.83 &  10.240 &   6.139 &   0.017 &   -24.68 &   -13.16 &     0.82 \\
+ 2457214.84 &  10.253 &   6.152 &   0.016 &   -25.36 &   -13.85 &     0.90 \\
+ 2457216.73 &  10.220 &   6.119 &   0.016 &   -25.13 &   -13.66 &     0.86 \\
+ 2457216.73 &  10.228 &   6.128 &   0.015 &   -25.15 &   -13.69 &     0.80 \\
+ 2457245.60 &   9.302 &   5.201 &   0.016 &   -22.21 &   -11.52 &     0.77 \\
+ 2457245.61 &   9.299 &   5.199 &   0.016 &   -21.85 &   -11.16 &     0.72 \\
+ 2457248.61 &   9.338 &   5.237 &   0.017 &   -21.66 &   -11.05 &     0.70 \\
 \enddata
 
-\tablecomments{The velocities given here are shifted into the system velocity rest frame using the results of the analysis presented in Section \ref{sec:orbit}. The raw radial velocity data is available at \url{https://github.com/kgullikson88/Planet-Finder}}
+\tablecomments{The velocities in the `raw' columns are our actual measurements. Those in the `shifted' columns are shifted into the system velocity rest frame using the results of the orbital fit described in Section \ref{sec:orbit}.}
 \end{deluxetable}
  
  
@@ -211,7 +210,7 @@ v_{m, 2}(t) = v_2(t) - v_1(t) + \Delta v_2
 \label{eqn:vel}
 \end{equation}
 
-We give the companion velocities in Table \ref{tab:rv_data}, after converting from $v_{m, 2}$ to $v_2$ using Equation \ref{eqn:vel} and the results of the analysis described below. The uncertainties given in Table \ref{tab:rv_data} are determined from the CCF peak width and the scaling factor ($f$) derived below. Both the primary and secondary velocities given in Table \ref{tab:rv_data} are for the reader's convenience; we use the raw measurements in the orbital fit.
+We give the measured companion velocities in Table \ref{tab:rv_data} (column 5). We additionally provide the velocities in the system velocity rest frame ($v_2$) by using Equation \ref{eqn:vel} and the results of the analysis described below. The uncertainties given in Table \ref{tab:rv_data} are determined from the CCF peak width and the scaling factor ($f$) derived below. The shifted primary and secondary velocities given in Table \ref{tab:rv_data} are for the reader's convenience since they are in the same reference frame; we use the raw measurements in the orbital fit.
 
 We use the emcee code \citep{emcee} to perform a Markov Chain Monte Carlo (MCMC) fit to an orbital solution. We fit the semi-amplitudes for both the primary and secondary stars (K1 and K2, respectively), the longitude of pericenter ($\omega$), the eccentricity (e), and the periastron passage epoch ($T_0$). In addition to the orbital parameters, we fit a velocity offset for both the primary and secondary star measurements ($\Delta v_1$ and $\Delta v_2$, respectively). We need to fit two velocity offsets because neither measurement is an absolute radial velocity measurement, and because they were measured in very different ways. We also fit a scale factor to apply to the uncertainties in the secondary star velocity measurements, which is necessary because the FWHM of the peak over-estimates the uncertainty in the peak velocity (see Figure \ref{fig:ccf_typical}), but should still be proportional to it (i.e. a broader peak has a higher uncertainty than a narrower peak). Finally, we account for radial velocity variations caused by instrumental or astrophysical noise by fitting an "RV jitter" term, which we add in quadrature to the primary star uncertainties. This term acts to increase the uncertainties on most other parameters, and so makes our estimates more conservative. Since the measured primary star velocities are differential and the measured secondary star velocities are measured in the rest frame of the primary star, we cannot measure the system radial velocity. 
 

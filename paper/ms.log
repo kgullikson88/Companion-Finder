@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2009.11.7)  27 AUG 2015 10:48
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2009.11.7)  27 AUG 2015 13:15
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -284,33 +284,33 @@ script {1}Michael Endl \textsuperscript {1}William D. Cochran \textsuperscript
 {1}Phillip J. MacQueen \textsuperscript {1}.
 
 [1{/usr/local/texlive/2009/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 175.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 174.
 
 
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 175.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 174.
  [2]
-<Resid_CCFs.pdf, id=24, 462.52798pt x 317.98799pt>
+<Resid_CCFs.pdf, id=23, 462.52798pt x 317.98799pt>
 File: Resid_CCFs.pdf Graphic file (type pdf)
  <use Resid_CCFs.pdf>
-<Typical_CCF.pdf, id=26, 462.52798pt x 317.98799pt>
+<Typical_CCF.pdf, id=25, 462.52798pt x 317.98799pt>
 File: Typical_CCF.pdf Graphic file (type pdf)
  <use Typical_CCF.pdf>
 [3 <./Resid_CCFs.pdf> <./Typical_CCF.pdf>]
-<SB2_Orbit.pdf, id=110, 462.52798pt x 317.98799pt>
+<SB2_Orbit.pdf, id=109, 462.52798pt x 317.98799pt>
 File: SB2_Orbit.pdf Graphic file (type pdf)
  <use SB2_Orbit.pdf>
-Underfull \hbox (badness 4940) in paragraph at lines 284--285
+Underfull \hbox (badness 4940) in paragraph at lines 283--284
 \OT1/cmr/m/n/10 avail-able at https://github.com/kgullikson88/Planet-
  []
 
-<Distributions_1.pdf, id=112, 578.16pt x 794.97pt>
+<Distributions_1.pdf, id=111, 578.16pt x 794.97pt>
 File: Distributions_1.pdf Graphic file (type pdf)
  <use Distributions_1.pdf>
-<Distributions_2.pdf, id=114, 578.16pt x 361.35pt>
+<Distributions_2.pdf, id=113, 578.16pt x 361.35pt>
 File: Distributions_2.pdf Graphic file (type pdf)
  <use Distributions_2.pdf>
 (./ms.bbl [4 <./SB2_Orbit.pdf>]
@@ -327,7 +327,7 @@ Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
 Here is how much of TeX's memory you used:
  3991 strings out of 493848
  51561 string characters out of 3149207
- 141574 words of memory out of 3000000
+ 151634 words of memory out of 3000000
  7229 multiletter control sequences out of 15000+200000
  12221 words of font info for 51 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
@@ -350,7 +350,7 @@ s/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2009/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2009/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2009/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmti8.pfb>
-Output written on ms.pdf (5 pages, 432976 bytes).
+Output written on ms.pdf (5 pages, 432709 bytes).
 PDF statistics:
  331 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
