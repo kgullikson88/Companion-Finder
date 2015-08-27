@@ -1,0 +1,150 @@
+\begin{thebibliography}{24}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{}\fi
+\expandafter\ifx\csname urllinklabel\endcsname\relax
+  \def\urllinklabel{[LINK]}\fi
+\expandafter\ifx\csname adsurllinklabel\endcsname\relax
+  \def\adsurllinklabel{[ADS]}\fi
+
+\bibitem[{{Bergmann} {et~al.}(2015){Bergmann}, {Endl}, {Hearnshaw},
+  {Wittenmyer}, \& {Wright}}]{Bergmann2015}
+{Bergmann}, C., {Endl}, M., {Hearnshaw}, J.~B., {Wittenmyer}, R.~A., \&
+  {Wright}, D.~J. 2015, International Journal of Astrobiology, 14, 173
+
+
+\bibitem[{{Brugameyer} {et~al.}(2015){Brugameyer}, {Endl}, {Cochran}, {MacQueen},
+  {Robertson}, {Meschiari}, {Ramirez}, {Shetrone}, {Gullikson}, {Johnson}, 
+  {Wittenmyer}, {Horner}, {Ciardi}, {Horch}, {Simon}, {Howell}, {Everett}, 
+  {Caldwell}, \& {Castanheira}}]{Brugameyer2015}
+{Brugameyer}, E., {Endl}, M., {Cochran}, W., {MacQueen}, P., {Robertson}, P.,
+ {Meschiari}, S., {Ramirez}, I., {Shetrone}, M., {Gullikson}, K., {Johnson}, M.,
+ {Wittenmyer}, R., {Horner}, J., {Ciardi}, D., {Horch}, E., {Simon}, A.,
+ {Howell}, S., {Everett}, M., {Caldwell}, C., \& {Castanheira}, B. 2015, \apj, in prep
+
+
+\bibitem[{{Butler} {et~al.}(1996){Butler}, {Marcy}, {Williams}, {McCarthy},
+  {Dosanjh}, \& {Vogt}}]{Butler1996}
+{Butler}, R.~P., {Marcy}, G.~W., {Williams}, E., {McCarthy}, C., {Dosanjh}, P.,
+  \& {Vogt}, S.~S. 1996, \pasp, 108, 500
+
+
+\bibitem[{Ciddor(1996)}]{Ciddor96}
+Ciddor, P.~E. 1996, Appl. Opt., 35, 1566
+ \href{http://ao.osa.org/abstract.cfm?URI=ao-35-9-1566}{\urllinklabel}
+
+\bibitem[{{Dotter} {et~al.}(2008){Dotter}, {Chaboyer}, {Jevremovi{\'c}},
+  {Kostov}, {Baron}, \& {Ferguson}}]{Dotter2008}
+{Dotter}, A., {Chaboyer}, B., {Jevremovi{\'c}}, D., {Kostov}, V., {Baron}, E.,
+  \& {Ferguson}, J.~W. 2008, \apjs, 178, 89
+
+
+\bibitem[{{Endl} {et~al.}(2000){Endl}, {K{\"u}rster}, \& {Els}}]{Endl2000}
+{Endl}, M., {K{\"u}rster}, M., \& {Els}, S. 2000, \aap, 362, 585
+
+
+\bibitem[{{Fischer} {et~al.}(2009){Fischer}, {Driscoll}, {Isaacson}, {Giguere},
+  {Marcy}, {Valenti}, {Wright}, {Henry}, {Johnson}, {Howard}, {Peek}, \&
+  {McCarthy}}]{Fischer2009}
+{Fischer}, D., {Driscoll}, P., {Isaacson}, H., {Giguere}, M., {Marcy}, G.~W.,
+  {Valenti}, J., {Wright}, J.~T., {Henry}, G.~W., {Johnson}, J.~A., {Howard},
+  A., {Peek}, K., \& {McCarthy}, C. 2009, \apj, 703, 1545
+
+
+\bibitem[{{Foreman-Mackey} {et~al.}(2013){Foreman-Mackey}, {Hogg}, {Lang}, \&
+  {Goodman}}]{emcee}
+{Foreman-Mackey}, D., {Hogg}, D.~W., {Lang}, D., \& {Goodman}, J. 2013, \pasp,
+  125, 306
+
+
+\bibitem[{{Gullikson} \& {Dodson-Robinson}(2013)}]{Gullikson2013_2}
+{Gullikson}, K. \& {Dodson-Robinson}, S. 2013, \aj, 145, 3
+
+
+\bibitem[{{Gullikson} {et~al.}(2014){Gullikson}, {Dodson-Robinson}, \&
+  {Kraus}}]{Gullikson2014}
+{Gullikson}, K., {Dodson-Robinson}, S., \& {Kraus}, A. 2014, \aj, 148, 53
+
+
+\bibitem[{{Gullikson} \& {Endl}(2013)}]{Gullikson2013}
+{Gullikson}, K. \& {Endl}, M. 2013, \pasp, 125, 924
+
+
+\bibitem[{{Harris} {et~al.}(2012){Harris}, {Andrews}, {Wilner}, \&
+  {Kraus}}]{Harris2012}
+{Harris}, R.~J., {Andrews}, S.~M., {Wilner}, D.~J., \& {Kraus}, A.~L. 2012,
+  \apj, 751, 115
+
+
+\bibitem[{{Husser} \& {Ulbrich}(2013)}]{Husser2013}
+{Husser}, T.-O. \& {Ulbrich}, K. 2013, ArXiv e-prints
+
+
+\bibitem[{{Kolbl} {et~al.}(2015){Kolbl}, {Marcy}, {Isaacson}, \&
+  {Howard}}]{Kolbl2015}
+{Kolbl}, R., {Marcy}, G.~W., {Isaacson}, H., \& {Howard}, A.~W. 2015, \aj, 149,
+  18
+
+
+\bibitem[{{Kraus} {et~al.}(2012){Kraus}, {Ireland}, {Hillenbrand}, \&
+  {Martinache}}]{Kraus2012}
+{Kraus}, A.~L., {Ireland}, M.~J., {Hillenbrand}, L.~A., \& {Martinache}, F.
+  2012, \apj, 745, 19
+
+
+\bibitem[{{Martins} {et~al.}(2013){Martins}, {Figueira}, {Santos}, \&
+  {Lovis}}]{Martins2013}
+{Martins}, J.~H.~C., {Figueira}, P., {Santos}, N.~C., \& {Lovis}, C. 2013,
+  \mnras, 436, 1215
+
+
+\bibitem[{{Mason} {et~al.}(2014){Mason}, {Wycoff}, {Hartkopf}, {Douglass}, \&
+  {Worley}}]{WDS}
+{Mason}, B.~D., {Wycoff}, G.~L., {Hartkopf}, W.~I., {Douglass}, G.~G., \&
+  {Worley}, C.~E. 2014, VizieR Online Data Catalog, 1, 2026
+
+
+\bibitem[{{Montet} {et~al.}(2015){Montet}, {Morton}, {Foreman-Mackey},
+  {Johnson}, {Hogg}, {Bowler}, {Latham}, {Bieryla}, \& {Mann}}]{Montet2015}
+{Montet}, B.~T., {Morton}, T.~D., {Foreman-Mackey}, D., {Johnson}, J.~A.,
+  {Hogg}, D.~W., {Bowler}, B.~P., {Latham}, D.~W., {Bieryla}, A., \& {Mann},
+  A.~W. 2015, ArXiv e-prints
+
+
+\bibitem[{{Pepe} {et~al.}(2011){Pepe}, {Lovis}, {S{\'e}gransan}, {Benz},
+  {Bouchy}, {Dumusque}, {Mayor}, {Queloz}, {Santos}, \& {Udry}}]{Pepe2011}
+{Pepe}, F., {Lovis}, C., {S{\'e}gransan}, D., {Benz}, W., {Bouchy}, F.,
+  {Dumusque}, X., {Mayor}, M., {Queloz}, D., {Santos}, N.~C., \& {Udry}, S.
+  2011, \aap, 534, A58
+
+
+\bibitem[{{Snellen} {et~al.}(2010){Snellen}, {de Kok}, {de Mooij}, \&
+  {Albrecht}}]{Snellen2010}
+{Snellen}, I.~A.~G., {de Kok}, R.~J., {de Mooij}, E.~J.~W., \& {Albrecht}, S.
+  2010, \nat, 465, 1049
+
+
+\bibitem[{{Tokovinin} \& {Smekhov}(2002)}]{Tokovinin2002}
+{Tokovinin}, A.~A. \& {Smekhov}, M.~G. 2002, \aap, 382, 118
+
+
+\bibitem[{{Toyota} {et~al.}(2009){Toyota}, {Itoh}, {Ishiguma}, {Urakawa},
+  {Murata}, {Oasa}, {Matsuyama}, {Funayama}, {Sato}, \& {Mukai}}]{Toyota2009}
+{Toyota}, E., {Itoh}, Y., {Ishiguma}, S., {Urakawa}, S., {Murata}, D., {Oasa},
+  Y., {Matsuyama}, H., {Funayama}, H., {Sato}, B., \& {Mukai}, T. 2009, \pasj,
+  61, 19
+
+
+\bibitem[{{Tull} {et~al.}(1995){Tull}, {MacQueen}, {Sneden}, \&
+  {Lambert}}]{TS23}
+{Tull}, R.~G., {MacQueen}, P.~J., {Sneden}, C., \& {Lambert}, D.~L. 1995,
+  \pasp, 107, 251
+
+
+\bibitem[{{Wittenmyer} {et~al.}(2006){Wittenmyer}, {Endl}, {Cochran}, {Hatzes},
+  {Walker}, {Yang}, \& {Paulson}}]{Wittenmyer2006}
+{Wittenmyer}, R.~A., {Endl}, M., {Cochran}, W.~D., {Hatzes}, A.~P., {Walker},
+  G.~A.~H., {Yang}, S.~L.~S., \& {Paulson}, D.~B. 2006, \aj, 132, 177
+
+
+\end{thebibliography}

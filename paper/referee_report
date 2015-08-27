@@ -1,0 +1,104 @@
+In addition to responding to the referee's comments, we have updated the analysis using data we obtained since submitting this article. None of the conclusions change, and most of the parameter values change by only a small amount. The referee's comments and our responses are listed below:
+
+**********************************************
+
+"but the paper gives disappointingly little in the way of a summary of the literature on the star to date"
+
+We elaborated somewhat on the Toyota (2009) data, and mentioned a previous unsuccessful search for a companion by Tokovinin (2001).
+
+**********************************************
+
+"I do not understand the need for or significance of all the diagrams in Figs. 4 and 5."
+
+These are the posterior distributions for all of the parameters we fit. Showing them gives a lot more information about with parameters are likely than a median and confidence interval (given in Table 2). We can remove these figures if the reviewer feels strongly about the issue, but prefer to leave them.
+
+
+**********************************************
+
+Regarding the tabulated velocity data, and apparent inconsistencies with the fitted data:
+
+
+The primary radial velocity measurements are differential, not absolute, velocities. The secondary radial velocities are measured separately, and are approximately in the primary star rest frame. We needed to shift them to this rest frame in order to subtract the primary star and recover the secondary star velocities.
+
+We agree that this may be confusing, and so have shifted all the tabulated velocities to system velocity rest frame (which they are in in Figure 3). The tabulated values are now in a form that a normal SB2 orbit code should be able to fit and replicate our values in Table 2.
+
+
+
+**********************************************
+
+Regarding the referee's analysis with different results:
+
+
+The confusion here is that the measured secondary velocities are given in the primary star rest frame. Thus the full range of the measured velocities includes the sum of both stars. We re-fit the data under the (false) assumption that both velocities are in an inertial frame, and get results very similar to the referee's:
+
+Parameter   Referee Value    Our value
+P           7009 +/- 178     7350 +/- 400
+T0          50158 +/- 179    49817 +/- 400
+K1          5.15 +/- 0.03    5.14 +/- 0.05
+K2          16.49 +/- 0.21   16.22 +/- 0.4
+e           0.675 +/- 0.005  0.674 +/- 0.01
+w           31.5 +/- 1.1     29.8 +/- 1
+
+The parameters we give in Table 2 account for the fact that the secondary star is in the primary star's rest frame (plus some constant shift which we call dv2 in the paper).
+
+
+**********************************************
+
+"In the name of the star, the psi should be lower case"
+
+Thank you. We changed this throughout the paper
+
+
+
+**********************************************
+
+"The expression 'flat lamp' should be explained"
+
+We explained what a flat lamp is in Section 2
+
+
+
+**********************************************
+
+"Fig. 1 could usefully have the ordinates labelled with dates"
+
+This is difficult to do by the nature of the observations. We would have to label every row, which we feel would add unneccessary clutter to the figure. This figure is best viewed as the visualation of a matrix.
+
+
+**********************************************
+
+Regarding the formatting of Tables 1+2.
+
+
+Thank you for the suggestions. We have reduced the number of significant figures in the dates to 2, and right-justified the measurement columns. We have retained the individual uncertainties since they are important information needed to replicate the analysis if the reader so chooses.
+
+
+
+**********************************************
+
+"Fig. 3 needs its box drawn around it and tick marks added"
+
+
+Thank you for the catch; we have fixed the figure
+
+**********************************************
+
+"Define MCMC"
+
+We did so.
+
+**********************************************
+
+"Table 3 does not offer a gamma-velocity"
+
+
+Since our measurements are differential radial velocities (for the primary) and in the rest frame of the primary star (for the secondary), we have no way of measuring the gamma velocity. The constant shift on the secondary velocities (dv2) is related to the gamma velocity, but since we use model spectra and no rv standard stars it is also related to small errors in the air-->vacuum conversion. The referee is correct that Figure 3 (and our updated Table 1) has velocities centered on the gamma velocity. We can do this without knowing the gamma velocity by enforcing 
+
+  v1(t) = -v2(t)*q
+
+and allowing for independent constant shifts to both the primary and secondary star velocities (which we call dv1 and dv2 in the paper).
+
+
+
+
+**********************************************

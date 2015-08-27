@@ -1,0 +1,47 @@
+This is BibTeX, Version 0.99c (TeX Live 2009)
+The top-level auxiliary file: ms.aux
+The style file: astroads.bst
+Database file #1: msNotes.bib
+Database file #2: references.bib
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+You've used 23 entries,
+            3025 wiz_defined-function locations,
+            782 strings with 9191 characters,
+and the built_in function-call counts, 12277 in all, are:
+= -- 972
+> -- 994
+< -- 5
++ -- 362
+- -- 339
+* -- 1118
+:= -- 2324
+add.period$ -- 23
+call.type$ -- 23
+change.case$ -- 205
+chr.to.int$ -- 23
+cite$ -- 23
+duplicate$ -- 456
+empty$ -- 657
+format.name$ -- 414
+if$ -- 2325
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 23
+newline$ -- 102
+num.names$ -- 92
+pop$ -- 242
+preamble$ -- 1
+purify$ -- 205
+quote$ -- 0
+skip$ -- 355
+stack$ -- 0
+substring$ -- 457
+swap$ -- 0
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 207
+warning$ -- 0
+while$ -- 90
+width$ -- 0
+write$ -- 238
