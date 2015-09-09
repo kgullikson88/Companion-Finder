@@ -7,6 +7,7 @@
 %\usepackage{algpseudocode}
 \usepackage{verbatim}
 \usepackage{ amssymb }
+\usepackage{amsmath}
 \bibliographystyle{astroads}
 \providecommand{\e}[1]{\ensuremath{\times 10^{#1}}}
 \begin{document}
@@ -45,7 +46,7 @@ Here, we use all of our spectra of $\psi^1$ Dra A to search directly for the spe
 \label{sec:obs}
 All data were taken at the 2.7m Harlan J. Smith Telescope at McDonald observatory using the 2dcoude echelle spectrograph \citep{TS23} at a resolving power $R\equiv \frac{\lambda}{\Delta \lambda} = 60000$. The starlight was filtered through a temperature-stabilized $I_2$ cell to imprint many sharp absorption lines on each spectrum to use for both a precise velocity metric \citep{Butler1996} and to model the instrument profile \citep{Endl2000}. The raw CCD data were reduced with standard IRAF\footnote{IRAF is distributed by the National Optical Astronomy Observatories, which are operated by the Association of Universities for Research in Astronomy, Inc., under cooperative agreement with the National Science Foundation.} tasks, and include steps for overscan trimming, bad pixel processing, bias frame subtraction, scattered light removal, flat field division, order extraction, and wavelength solution fitting using a Th-Ar calibration lamp spectrum. Particularly strong cosmic ray hits were removed manually by interpolating across nearby pixels.
 
-We used the \emph{Austral} code \citep{Endl2000} to measure the differential radial velocity of $\psi^1$ Dra A at each observation. We provide the raw velocity measurements in Table \ref{tab:rv_data}, as well as the velocities shifted into the system velocity rest frame. The velocity shift necessary to convert from the differential radial velocities to this frame is found in Section \ref{sec:orbit}. Table \ref{tab:rv_data} also gives the measurements of the companion radial velocity (described in the next section).
+We used the \emph{Austral} code \citep{Endl2000} to measure the differential radial velocity of $\psi^1$ Dra A at each observation by comparing each spectrum to a high signal-to-noise ratio template spectrum of the same star. We provide the raw velocity measurements in Table \ref{tab:rv_data}, as well as the velocities shifted into the system velocity rest frame. The velocity shift necessary to convert from the differential radial velocities to this frame is found in Section \ref{sec:orbit}. Table \ref{tab:rv_data} also gives the measurements of the companion radial velocity (described in the next section).
 
 
 
@@ -55,7 +56,7 @@ We used the \emph{Austral} code \citep{Endl2000} to measure the differential rad
 %\tablenum{1}
 \tablecaption{Observations of $\psi^1$ Dra A \label{tab:rv_data}}
 \tablehead{
-\colhead{Julian Date} & \multicolumn{3}{c}{Primary RV (m/s)} & \multicolumn{3}{c}{Secondary RV (m/s)} \\
+\colhead{Julian Date} & \multicolumn{3}{c}{Primary RV (km/s)} & \multicolumn{3}{c}{Secondary RV (km/s)} \\
 & \colhead{raw} & \colhead{shifted} & \colhead{$\sigma$}  & \colhead{raw} & \colhead{shifted}  & \colhead{$\sigma$} }
 
 \startdata
@@ -112,7 +113,7 @@ We used the \emph{Austral} code \citep{Endl2000} to measure the differential rad
 \tablenum{1}
 \tablecaption{Observations of $\psi^1$ Dra A (continued)}
 \tablehead{
-\colhead{Julian Date} & \multicolumn{3}{c}{Primary RV (m/s)} & \multicolumn{3}{c}{Secondary RV (m/s)} \\
+\colhead{Julian Date} & \multicolumn{3}{c}{Primary RV (km/s)} & \multicolumn{3}{c}{Secondary RV (km/s)} \\
 & \colhead{raw} & \colhead{shifted} & \colhead{$\sigma$}  & \colhead{raw} & \colhead{shifted}  & \colhead{$\sigma$} }
 
 \startdata
@@ -200,8 +201,6 @@ We normalize each CCF by subtracting a quadratic function that we fit well away 
 
 
 
-\section{Mass Ratio Estimation}
-\label{sec:orbit}
 
 We measure the radial velocity of the companion at each epoch by finding the maximum and full-width-half-maximum (FWHM) of the residual CCF. Based off Figure \ref{fig:resids}, we only use the portion of the CCFs with $-50 < v < 10 \rm km\ s^{-1}$; we show a typical residual CCF in Figure \ref{fig:ccf_typical}. Since the CCFs were shifted to subtract the contribution from the primary star, the measured velocities ($v_{m, 2}$) are related to the true barycentric velocities ($v_1$ and $v_2$ for the primary and secondary, respectively) and the constant shift described above ($\Delta v_2$) through
 
@@ -212,9 +211,25 @@ v_{m, 2}(t) = v_2(t) - v_1(t) + \Delta v_2
 
 We give the measured companion velocities in Table \ref{tab:rv_data} (column 5). We additionally provide the velocities in the system velocity rest frame ($v_2$) by using Equation \ref{eqn:vel} and the results of the analysis described below. The uncertainties given in Table \ref{tab:rv_data} are determined from the CCF peak width and the scaling factor ($f$) derived below. The shifted primary and secondary velocities given in Table \ref{tab:rv_data} are for the reader's convenience since they are in the same reference frame; we use the raw measurements in the orbital fit.
 
-We use the emcee code \citep{emcee} to perform a Markov Chain Monte Carlo (MCMC) fit to an orbital solution. We fit the semi-amplitudes for both the primary and secondary stars (K1 and K2, respectively), the longitude of pericenter ($\omega$), the eccentricity (e), and the periastron passage epoch ($T_0$). In addition to the orbital parameters, we fit a velocity offset for both the primary and secondary star measurements ($\Delta v_1$ and $\Delta v_2$, respectively). We need to fit two velocity offsets because neither measurement is an absolute radial velocity measurement, and because they were measured in very different ways. We also fit a scale factor to apply to the uncertainties in the secondary star velocity measurements, which is necessary because the FWHM of the peak over-estimates the uncertainty in the peak velocity (see Figure \ref{fig:ccf_typical}), but should still be proportional to it (i.e. a broader peak has a higher uncertainty than a narrower peak). Finally, we account for radial velocity variations caused by instrumental or astrophysical noise by fitting an "RV jitter" term, which we add in quadrature to the primary star uncertainties. This term acts to increase the uncertainties on most other parameters, and so makes our estimates more conservative. Since the measured primary star velocities are differential and the measured secondary star velocities are measured in the rest frame of the primary star, we cannot measure the system radial velocity. 
 
- We give the median value and uncertainty for each parameter in Table \ref{tab:orbit}. The uncertainties are estimated from the posterior probability distribution samples such that the lower and upper bounds give the 16th and 84th percentile (i.e. they are $1\sigma$ confidence intervals). We plot the best-fit orbit with the data in Figure \ref{fig:orbit}, with the uncertainties on the companion velocities scaled. We show the posterior probability distributions for the orbital parameters in Figure \ref{fig:orbit_dist} and for the data shifting and scaling parameters ($\Delta v_1$, $\Delta v_2$, and the uncertainty scaling) in Figure \ref{fig:datamanip_dist}.
+\section{Orbital Fit}
+\label{sec:orbit}
+
+We now use the radial velocity measurements to find the best orbital parameters to describe the orbit, as well as some data scaling and shifting factors. The orbit is described by the semi-amplitudes for both the primary and secondary stars (K1 and K2, respectively), the longitude of pericenter ($\omega$), the eccentricity (e), the period ($P$), and the periastron passage epoch ($T_0$). We cannot measure the system radial velocity, which is usually the final orbital element, because the measured primary star velocities are differential and the measured secondary star velocities are measured relative to the primary star.
+
+Since the primary star radial velocity measurements are differential measurements, we must also fit a constant shift ($\Delta v_1$) to account for the absolute radial velocity of the primary at the time in which our template spectrum was observed. We include an RV jitter term ($\sigma_J$) to the fit to account for radial velocity variations not encompassed by the orbital solution, and add the value in quadrature with the formal uncertainties on the primary star velocity measurements. 
+
+The companion radial velocities are measured relative to the primary star plus a small velocity shift ($\Delta v_2$) caused by a slight inaccuracies in the vacuum to air wavelength conversion in the model spectrum. Finally, the CCF peak full-width at half maximum vastly over-estimates the velocity uncertainty and so we fit a scale factor ($f$) to apply to the companion velocity uncertainties. The uncertainties given in Table \ref{tab:rv_data} are already scaled by this factor. The full log-likelihood function ($\mathcal{L}$) is then given by:
+
+\begin{align*}
+s_1 &= \sum_{t_m} \frac{(v_{1,m} - v_1(t_m) - \Delta v_1)^2 }{\sigma_{v_1}^2 + \sigma_J^2} + \ln{2\pi(\sigma_{v_1}^2 + \sigma_J^2)} \\
+s_2 &= \sum_{t_m} \frac{(v_{2,m} - v_2(t_m)(1+\frac{K_1}{K_2}) - \Delta v_2)^2}{f\sigma_{v_2}^2 } + \ln{2\pi(f\sigma_{v_2}^2)} \\ 
+\mathcal{L} &= -0.5(s_1 + s_2) \\
+\end{align*}
+
+where $v_{1,2}(t) = v(T_0, P, e, K_{1,2}, \omega, t)$ is the velocity at time t given by the orbital elements $T_0, P, e, K$, and $\omega$.
+
+We use the affine invariant sampler provided in the emcee code \citep{emcee} to perform a Markov Chain Monte Carlo (MCMC) fit to all of the parameters described above. We use flat priors in all variables except for the RV jitter and companion rv uncertainty scale factors ($\sigma_J$ and $f$, respectively), for which we use log-uniform priors to allow for a large range of values.  We give the median value and uncertainty for each parameter in Table \ref{tab:orbit}. The uncertainties are estimated from the posterior probability distribution samples such that the lower and upper bounds give the 16th and 84th percentile (i.e. they are $1\sigma$ credibility intervals). We plot the best-fit orbit with the data in Figure \ref{fig:orbit}, with the uncertainties on the companion velocities scaled and the velocities shifted by $\Delta v_1$ and $\Delta v_2$. We show the posterior probability distributions for the orbital parameters in Figure \ref{fig:orbit_dist} and for the data shifting and scaling parameters ($\Delta v_1$, $\Delta v_2$, and the uncertainty scaling) in Figure \ref{fig:datamanip_dist}.
 
 Next, we calculate a series of derived quantities to characterize the companion and report them in Table \ref{tab:orbit}. The mass ratio of the system is the ratio $K1/K2 = 0.47$. We estimate the primary star mass by interpolating Dartmouth isochrones \citep{Dotter2008} with the `isochrones' code \citep[described in][]{Montet2015}, and using spectroscopic parameters derived in Brugameyer et al (2015). The secondary mass is $M_2 = qM_1 \sim 0.70 M_{\odot}$; assuming the same age and metallicity as the primary, the Dartmouth isochrones give an expected temperature of $\sim 4400 $ K. This temperature is in excellent agreement with the high contrast imaging data, which supports a companion of $\sim 4400$ K with large uncertainties. With both the primary and secondary star mass, we calculate the orbital inclination and semimajor axis and report them in Table \ref{tab:orbit}.
 
