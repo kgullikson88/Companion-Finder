@@ -1,4 +1,4 @@
-\begin{thebibliography}{22}
+\begin{thebibliography}{23}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname href\endcsname\relax
   \def\href#1#2{}\fi
@@ -23,6 +23,17 @@
   {Kostov}, {Baron}, \& {Ferguson}}]{Dotter2008}
 {Dotter}, A., {Chaboyer}, B., {Jevremovi{\'c}}, D., {Kostov}, V., {Baron}, E.,
   \& {Ferguson}, J.~W. 2008, \apjs, 178, 89
+
+
+\bibitem[{{Endl} {et~al.}(2015){Endl}, {Brugamyer}, {Cochran}, {MacQueen},
+  {Robertson}, {Meschiari}, {Ramirez}, {Shetrone}, {Gullikson}, {Johnson},
+  {Wittenmyer}, {Horner}, {Ciardi}, {Horch}, {Simon}, {Howell}, {Everett},
+  {Caldwell}, \& {Castenheira}}]{Endl2015}
+{Endl}, M., {Brugamyer}, E., {Cochran}, W.~D., {MacQueen}, P.~J., {Robertson},
+  P., {Meschiari}, S., {Ramirez}, I., {Shetrone}, M., {Gullikson}, K.,
+  {Johnson}, M.~C., {Wittenmyer}, R., {Horner}, J., {Ciardi}, D., {Horch}, E.,
+  {Simon}, A.~E., {Howell}, S.~B., {Everett}, M., {Caldwell}, C., \&
+  {Castenheira}, B. 2015, \apj
 
 
 \bibitem[{{Endl} {et~al.}(2000){Endl}, {K{\"u}rster}, \& {Els}}]{Endl2000}

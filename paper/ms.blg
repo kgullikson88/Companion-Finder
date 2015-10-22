@@ -3,45 +3,50 @@ The top-level auxiliary file: ms.aux
 The style file: astroads.bst
 Database file #1: msNotes.bib
 Database file #2: references.bib
+You're missing a field name---line 3796 of file references.bib
+ :      year = 2015,
+ :                  ,
+I'm skipping whatever remains of this entry
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-You've used 22 entries,
+You've used 23 entries,
             3025 wiz_defined-function locations,
-            772 strings with 9012 characters,
-and the built_in function-call counts, 11914 in all, are:
-= -- 940
-> -- 984
+            776 strings with 9556 characters,
+and the built_in function-call counts, 13021 in all, are:
+= -- 1006
+> -- 1140
 < -- 4
-+ -- 358
-- -- 336
-* -- 1091
-:= -- 2257
-add.period$ -- 22
-call.type$ -- 22
-change.case$ -- 200
-chr.to.int$ -- 22
-cite$ -- 22
-duplicate$ -- 438
-empty$ -- 626
-format.name$ -- 410
-if$ -- 2251
++ -- 416
+- -- 393
+* -- 1219
+:= -- 2480
+add.period$ -- 23
+call.type$ -- 23
+change.case$ -- 223
+chr.to.int$ -- 23
+cite$ -- 23
+duplicate$ -- 457
+empty$ -- 650
+format.name$ -- 470
+if$ -- 2438
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 22
-newline$ -- 98
-num.names$ -- 88
-pop$ -- 238
+missing$ -- 23
+newline$ -- 102
+num.names$ -- 92
+pop$ -- 264
 preamble$ -- 1
-purify$ -- 200
+purify$ -- 223
 quote$ -- 0
-skip$ -- 338
+skip$ -- 350
 stack$ -- 0
-substring$ -- 433
+substring$ -- 444
 swap$ -- 0
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 198
+type$ -- 207
 warning$ -- 0
-while$ -- 86
+while$ -- 89
 width$ -- 0
-write$ -- 227
+write$ -- 236
+(There was 1 error message)
