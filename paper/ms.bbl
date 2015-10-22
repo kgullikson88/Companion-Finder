@@ -1,4 +1,4 @@
-\begin{thebibliography}{24}
+\begin{thebibliography}{22}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname href\endcsname\relax
   \def\href#1#2{}\fi
@@ -13,25 +13,11 @@
   {Wright}, D.~J. 2015, International Journal of Astrobiology, 14, 173
 
 
-\bibitem[{{Brugameyer} {et~al.}(2015){Brugameyer}, {Endl}, {Cochran}, {MacQueen},
-  {Robertson}, {Meschiari}, {Ramirez}, {Shetrone}, {Gullikson}, {Johnson}, 
-  {Wittenmyer}, {Horner}, {Ciardi}, {Horch}, {Simon}, {Howell}, {Everett}, 
-  {Caldwell}, \& {Castanheira}}]{Brugameyer2015}
-{Brugameyer}, E., {Endl}, M., {Cochran}, W., {MacQueen}, P., {Robertson}, P.,
- {Meschiari}, S., {Ramirez}, I., {Shetrone}, M., {Gullikson}, K., {Johnson}, M.,
- {Wittenmyer}, R., {Horner}, J., {Ciardi}, D., {Horch}, E., {Simon}, A.,
- {Howell}, S., {Everett}, M., {Caldwell}, C., \& {Castanheira}, B. 2015, \apj, in prep
-
-
 \bibitem[{{Butler} {et~al.}(1996){Butler}, {Marcy}, {Williams}, {McCarthy},
   {Dosanjh}, \& {Vogt}}]{Butler1996}
 {Butler}, R.~P., {Marcy}, G.~W., {Williams}, E., {McCarthy}, C., {Dosanjh}, P.,
   \& {Vogt}, S.~S. 1996, \pasp, 108, 500
 
-
-\bibitem[{Ciddor(1996)}]{Ciddor96}
-Ciddor, P.~E. 1996, Appl. Opt., 35, 1566
- \href{http://ao.osa.org/abstract.cfm?URI=ao-35-9-1566}{\urllinklabel}
 
 \bibitem[{{Dotter} {et~al.}(2008){Dotter}, {Chaboyer}, {Jevremovi{\'c}},
   {Kostov}, {Baron}, \& {Ferguson}}]{Dotter2008}

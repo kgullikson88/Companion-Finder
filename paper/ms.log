@@ -1,6 +1,5 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2009.11.7)  9 SEP 2015 17:28
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2009.11.7)  22 OCT 2015 13:51
 entering extended mode
- \write18 enabled.
  %&-line parsing enabled.
 **ms.tex
 (./ms.tex
@@ -353,58 +352,52 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 175.
  [2]
-<Resid_CCFs.pdf, id=23, 462.52798pt x 317.98799pt>
+<Resid_CCFs.pdf, id=24, 462.52798pt x 317.98799pt>
 File: Resid_CCFs.pdf Graphic file (type pdf)
  <use Resid_CCFs.pdf>
-<Typical_CCF.pdf, id=25, 462.52798pt x 317.98799pt>
+<Typical_CCF.pdf, id=26, 462.52798pt x 317.98799pt>
 File: Typical_CCF.pdf Graphic file (type pdf)
  <use Typical_CCF.pdf>
 [3 <./Resid_CCFs.pdf> <./Typical_CCF.pdf>]
-<SB2_Orbit.pdf, id=111, 462.52798pt x 317.98799pt>
+<SB2_Orbit.pdf, id=112, 462.52798pt x 317.98799pt>
 File: SB2_Orbit.pdf Graphic file (type pdf)
  <use SB2_Orbit.pdf>
 Underfull \hbox (badness 4940) in paragraph at lines 298--299
 \OT1/cmr/m/n/10 avail-able at https://github.com/kgullikson88/Planet-
  []
 
-<Distributions_1.pdf, id=113, 578.16pt x 794.97pt>
-File: Distributions_1.pdf Graphic file (type pdf)
- <use Distributions_1.pdf>
-[4 <./SB2_Orbit.pdf>] <Distributions_2.pdf, id=161, 578.16pt x 361.35pt>
-File: Distributions_2.pdf Graphic file (type pdf)
-
-<use Distributions_2.pdf> (./ms.bbl) [5 <./Distributions_1.pdf> <./Distribution
-s_2.pdf>] (./ms.aux) ) 
+(./ms.bbl [4 <./SB2_Orbit.pdf>]) [5] (./ms.aux) ) 
 Here is how much of TeX's memory you used:
- 4579 strings out of 493848
- 58214 string characters out of 3149207
- 162029 words of memory out of 3000000
- 7801 multiletter control sequences out of 15000+200000
+ 4559 strings out of 493848
+ 57800 string characters out of 3149207
+ 162716 words of memory out of 3000000
+ 7783 multiletter control sequences out of 15000+200000
  12221 words of font info for 51 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 34i,12n,29p,1138b,452s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/local/texlive/2009/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmcsc10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmex10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmmi10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmmi5.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmmi6.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmmi7.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmmi8.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r5.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.
-pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
-></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></
-usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr
-/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/
-local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/lo
-cal/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/loca
-l/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/
-texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/t
-exlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb>
-Output written on ms.pdf (5 pages, 452717 bytes).
+ 34i,12n,29p,1090b,452s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/local/texlive/2009/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2009/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2009/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2009/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2009/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2009/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2009/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2009/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2009/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2009/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr8.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr9.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmsy6.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmsy7.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmsy8.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmti10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmti8.pfb>
+Output written on ms.pdf (5 pages, 373911 bytes).
 PDF statistics:
- 339 PDF objects out of 1000 (max. 8388607)
+ 221 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -4,44 +4,44 @@ The style file: astroads.bst
 Database file #1: msNotes.bib
 Database file #2: references.bib
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-You've used 23 entries,
+You've used 22 entries,
             3025 wiz_defined-function locations,
-            782 strings with 9191 characters,
-and the built_in function-call counts, 12277 in all, are:
-= -- 972
-> -- 994
-< -- 5
-+ -- 362
-- -- 339
-* -- 1118
-:= -- 2324
-add.period$ -- 23
-call.type$ -- 23
-change.case$ -- 205
-chr.to.int$ -- 23
-cite$ -- 23
-duplicate$ -- 456
-empty$ -- 657
-format.name$ -- 414
-if$ -- 2325
+            772 strings with 9012 characters,
+and the built_in function-call counts, 11914 in all, are:
+= -- 940
+> -- 984
+< -- 4
++ -- 358
+- -- 336
+* -- 1091
+:= -- 2257
+add.period$ -- 22
+call.type$ -- 22
+change.case$ -- 200
+chr.to.int$ -- 22
+cite$ -- 22
+duplicate$ -- 438
+empty$ -- 626
+format.name$ -- 410
+if$ -- 2251
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 23
-newline$ -- 102
-num.names$ -- 92
-pop$ -- 242
+missing$ -- 22
+newline$ -- 98
+num.names$ -- 88
+pop$ -- 238
 preamble$ -- 1
-purify$ -- 205
+purify$ -- 200
 quote$ -- 0
-skip$ -- 355
+skip$ -- 338
 stack$ -- 0
-substring$ -- 457
+substring$ -- 433
 swap$ -- 0
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 207
+type$ -- 198
 warning$ -- 0
-while$ -- 90
+while$ -- 86
 width$ -- 0
-write$ -- 238
+write$ -- 227
