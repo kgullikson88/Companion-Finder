@@ -24,7 +24,7 @@
 
 
 \begin{abstract}
-Several planet-search groups have acquired a great deal of data in the form of time-series spectra of several hundred nearby stars with time baselines of over a decade. While binary star detections are generally not the goal of these long-term monitoring efforts, the binary stars hiding in existing planet search data are precisely the type that are too close to the primary star to detect with imaging or interferometry techniques. We use a cross-correlation analysis to detect the spectral lines of a new low-mass companion to $\psi^1$ Draconis A, which has a known roughly equal-mass companion at $\sim 680$ AU. We measure the mass of $\psi^1$ Draconis C as $M_2 = 0.70 \pm 0.07 M_{\odot}$, with an orbital period of $\sim 20$ years. This technique could be used to characterize binary companions to many stars that show large-amplitude modulation or linear trends in radial velocity data.
+Several planet-search groups have acquired a great deal of data in the form of time-series spectra of several hundred nearby stars with time baselines of over a decade. While binary star detections are generally not the goal of these long-term monitoring efforts, the binary stars hiding in existing planet search data are precisely the type that are too close to the primary star to detect with imaging or interferometry techniques. We use a cross-correlation analysis to detect the spectral lines of a new low-mass companion to $\psi^1$ Draconis A, which has a known roughly equal-mass companion at ${\sim}680$ AU. We measure the mass of $\psi^1$ Draconis C as $M_2 = 0.70 \pm 0.07 M_{\odot}$, with an orbital period of ${\sim}20$ years. This technique could be used to characterize binary companions to many stars that show large-amplitude modulation or linear trends in radial velocity data.
 \end{abstract}
 
 \maketitle
@@ -186,7 +186,7 @@ We normalize each CCF by subtracting a quadratic function that we fit well away 
 \begin{figure}
   \centering
   \includegraphics[width=\columnwidth]{Resid_CCFs.pdf}
-  \caption{Cross-correlation functions of a 4400 K model spectrum template with the data, after subtraction of the average CCF. Early dates are on bottom. The dark curve in the top middle is the signal of the companion star.}
+  \caption{Cross-correlation functions of a 4400 K model spectrum template with the data, after subtraction of the average CCF. The dark curve in the top middle is the signal of the companion star.}
   \label{fig:resids}
 \end{figure}
 
@@ -219,7 +219,7 @@ We now use the radial--velocity measurements to find the best orbital parameters
 
 Since the primary--star radial velocity measurements are differential measurements, we must also fit a constant shift ($\Delta v_1$) to account for the absolute radial velocity of the primary at the time at which our template spectrum was observed. We include an rv--jitter term ($\sigma_J$) to the fit to account for radial--velocity variations not encompassed by the orbital solution, and add the value in quadrature with the formal uncertainties on the primary star--velocity measurements. 
 
-The companion radial velocities are measured relative to the primary star plus a small velocity shift ($\Delta v_2$) caused by a slight inaccuracies in the vacuum--to--air wavelength conversion in the model spectrum and spectrograph wavelength drift throughout the night. Finally, the CCF peak full-width at half maximum vastly over-estimates the velocity uncertainty and so we fit a scale factor ($f$) to apply to the companion velocity uncertainties. The uncertainties given in Table \ref{tab:rv_data} are already scaled by that factor. The full log-likelihood function ($\mathcal{L}$) is then given by:
+The companion radial velocities are measured relative to the primary star plus a small velocity shift ($\Delta v_2$) caused by slight inaccuracies in the vacuum--to--air wavelength conversion in the model spectrum and spectrograph wavelength drift throughout the night. Finally, the CCF peak full-width at half maximum vastly over-estimates the velocity uncertainty and so we fit a scale factor ($f$) to apply to the companion velocity uncertainties. The uncertainties given in Table \ref{tab:rv_data} are already scaled by that factor. The full log-likelihood function ($\mathcal{L}$) is then given by:
 
 \begin{align*}
 s_1 &= \sum_{t_m} \frac{(v_{1,m} - v_1(t_m) - \Delta v_1)^2 }{\sigma_{v_1}^2 + \sigma_J^2} + \ln{2\pi(\sigma_{v_1}^2 + \sigma_J^2)} \\
@@ -298,10 +298,10 @@ The $\psi^1$ Draconis system is therefore a hierarchical multiple system with th
 This method could be used to search for the spectral lines of stellar companions to other stars observed with high--precision radial--velocity surveys. To that end, and in the goal of open science, we make the source code used for the analysis and generating the plots for this paper available at \url{https://github.com/kgullikson88/Planet-Finder}. The raw radial--velocity measurements for both the primary and secondary star, as well as the MCMC chains, are available at the same url.
 
 This research has made use of the SIMBAD database, operated at CDS, Strasbourg, France, and of Astropy, a community-developed core Python package for Astronomy (Astropy Collaboration, 2013).
-It was supported by a start-up grant to Adam Kraus from the University of Texas.
+It was supported by a start-up grant to Adam Kraus from the University of Texas. We would like to thank the referee for various suggestions that improved this paper.
 
 
 
 \newpage
-\bibliography{references}
+\bibliography{}
 \end{document}
