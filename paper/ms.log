@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.7.8)  22 OCT 2015 14:10
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.7.8)  22 OCT 2015 14:21
 entering extended mode
  %&-line parsing enabled.
 **ms.tex
@@ -310,64 +310,84 @@ ript {1}Michael Endl \textsuperscript {1}William D. Cochran \textsuperscript {1
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 
 Package longtable Warning: Column widths have changed
-(longtable)                in table 1 on input line 106.
+(longtable)                in table 1 on input line 105.
 
 
 Package longtable Warning: Column widths have changed
-(longtable)                in table 1 on input line 162.
+(longtable)                in table 1 on input line 161.
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 175.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 174.
 
 (/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 175.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 174.
  [2]
 <Resid_CCFs.pdf, id=23, 433.62pt x 289.08pt>
 File: Resid_CCFs.pdf Graphic file (type pdf)
  <use Resid_CCFs.pdf>
-Underfull \hbox (badness 10000) in paragraph at lines 189--189
+Underfull \hbox (badness 10000) in paragraph at lines 188--188
 $[]$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 189--189
+Underfull \hbox (badness 10000) in paragraph at lines 188--188
 
  []
 
 <Typical_CCF.pdf, id=25, 462.52798pt x 317.98799pt>
 File: Typical_CCF.pdf Graphic file (type pdf)
  <use Typical_CCF.pdf>
-Underfull \hbox (badness 10000) in paragraph at lines 198--198
+Underfull \hbox (badness 10000) in paragraph at lines 197--197
 $[]$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 198--198
+Underfull \hbox (badness 10000) in paragraph at lines 197--197
 
  []
 
 [3 <./Resid_CCFs.pdf> <./Typical_CCF.pdf>]
 
 Package longtable Warning: Column widths have changed
-(longtable)                in table 1 on input line 275.
+(longtable)                in table 1 on input line 273.
 
 <SB2_Orbit.pdf, id=108, 462.52798pt x 317.98799pt>
 File: SB2_Orbit.pdf Graphic file (type pdf)
  <use SB2_Orbit.pdf>
-Underfull \hbox (badness 10000) in paragraph at lines 283--283
+Underfull \hbox (badness 10000) in paragraph at lines 281--281
 $[]$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 283--283
+Underfull \hbox (badness 10000) in paragraph at lines 281--281
 
  []
 
 
-Underfull \hbox (badness 4940) in paragraph at lines 298--299
-\OT1/cmr/m/n/10 avail-able at https://github.com/kgullikson88/Planet-
+Underfull \hbox (badness 3148) in paragraph at lines 296--297
+[]\OT1/cmr/m/n/10 This method could be used to search for the
+ []
+
+
+Underfull \hbox (badness 1668) in paragraph at lines 296--297
+\OT1/cmr/m/n/10 spec-tral lines of stel-lar com-pan-ions to other stars
+ []
+
+
+Underfull \hbox (badness 3281) in paragraph at lines 296--297
+\OT1/cmr/m/n/10 To that end, and in the goal of open sci-ence,
+ []
+
+
+Underfull \hbox (badness 3557) in paragraph at lines 296--297
+\OT1/cmr/m/n/10 we make the source code used for the anal-y-sis
+ []
+
+
+Underfull \hbox (badness 2582) in paragraph at lines 296--297
+\OT1/cmr/m/n/10 and gen-er-at-ing the plots for this pa-per avail-able
  []
 
 (./ms.bbl [4 <./SB2_Orbit.pdf>]
@@ -406,7 +426,7 @@ share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-
 texlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/font
 s/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/type1/pub
 lic/amsfonts/cm/cmti8.pfb>
-Output written on ms.pdf (5 pages, 315814 bytes).
+Output written on ms.pdf (5 pages, 315815 bytes).
 PDF statistics:
  217 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
