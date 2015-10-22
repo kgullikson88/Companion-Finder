@@ -12,14 +12,14 @@
 \providecommand{\e}[1]{\ensuremath{\times 10^{#1}}}
 \begin{document}
 
-\title{Mining Planet Search Data for Binary Stars: The $\psi^1$ Draconis system [UPDATE PLOTS!]}
+\title{Mining Planet Search Data for Binary Stars: The $\psi^1$ Draconis system}
 \author{Kevin Gullikson \altaffilmark{1}}
 %\affil{University of Texas, Department of Astronomy \email{kgulliks@astro.as.utexas.edu}}
 \author{Michael Endl \altaffilmark{1}}
 \author{William D. Cochran \altaffilmark{1}}
 \author{Phillip J. MacQueen \altaffilmark{1}}
 
-\altaffiltext{1}{University of Texas}
+\altaffiltext{1}{University of Texas, Astronomy Department. 2515 Speedway, Stop C1400. Austin, TX 78712 \email{kgulliks@astro.as.utexas.edu}}
 
 
 
@@ -177,7 +177,7 @@ We use a cross-correlation analysis inspired by recent work attempting to detect
 \item {[}Fe/H{]} = 0.0
 \end{itemize}
 
-The model temperature was chosen based on high contrast imaging in Brugameyer et al (2015), which finds a companion with approximately that temperature. We shift each CCF so that the dominant peak, which signifies the match of the M-star model template with the F-type primary star, falls at $v=0$. This effectively puts the cross-correlation functions in the rest frame of the primary star, although there is a constant velocity offset because the observed spectra are wavelength-calibrated to air wavelengths, while the model spectra is calculated in vacuum wavelengths. We shift the model spectra to air wavelengths using an approximate formula \citep{Ciddor96}, but expect a small difference between the calculated and actual index of refraction since the observatory is at a higher altitude with correspondingly lower air pressure than where the conversion formula was calibrated. The difference in index of refraction translates into a velocity offset, which we denote as $\Delta v_2$ in later sections of this paper.
+The model temperature was chosen based on high contrast imaging in Brugameyer et al (2015), which finds a companion with approximately that temperature. We shift each CCF so that the dominant peak, which signifies the match of the M-star model template with the F-type primary star, falls at $v=0$. This effectively puts the cross-correlation functions in the rest frame of the primary star, although there is a constant velocity offset caused by small errors in the vacuum to air wavelength conversion and spectrograph wavelength drift throughout the night. We denote this shift as $\Delta v_2$ in later sections of this paper.
 
 We normalize each CCF by subtracting a quadratic function that we fit well away from the peak, and then dividing by the height of the CCF at $v=0$ (the peak). The average of these shifted CCFs is a close estimate for the cross-correlation function of the M-star template with the F5 primary star, since the contribution from the companion is diluted by shifting the CCFs to the primary star rest frame. We remove the contribution from the primary star by subtracting the average from each CCF. The result is a series of residual cross-correlation functions that are estimates for the CCF of the companion spectrum against the 4400 K model spectrum template, with significant noise. We show the residual CCFs in Figure \ref{fig:resids}; the trace of the companion star is easily visible as the dark curve near the top middle. We are unable to recover the companion signal at early dates when the two stars were close to each other in velocity space.
 
@@ -219,7 +219,7 @@ We now use the radial velocity measurements to find the best orbital parameters 
 
 Since the primary star radial velocity measurements are differential measurements, we must also fit a constant shift ($\Delta v_1$) to account for the absolute radial velocity of the primary at the time in which our template spectrum was observed. We include an RV jitter term ($\sigma_J$) to the fit to account for radial velocity variations not encompassed by the orbital solution, and add the value in quadrature with the formal uncertainties on the primary star velocity measurements. 
 
-The companion radial velocities are measured relative to the primary star plus a small velocity shift ($\Delta v_2$) caused by a slight inaccuracies in the vacuum to air wavelength conversion in the model spectrum. Finally, the CCF peak full-width at half maximum vastly over-estimates the velocity uncertainty and so we fit a scale factor ($f$) to apply to the companion velocity uncertainties. The uncertainties given in Table \ref{tab:rv_data} are already scaled by this factor. The full log-likelihood function ($\mathcal{L}$) is then given by:
+The companion radial velocities are measured relative to the primary star plus a small velocity shift ($\Delta v_2$) caused by a slight inaccuracies in the vacuum to air wavelength conversion in the model spectrum and spectrograph wavelength drift throughout the night. Finally, the CCF peak full-width at half maximum vastly over-estimates the velocity uncertainty and so we fit a scale factor ($f$) to apply to the companion velocity uncertainties. The uncertainties given in Table \ref{tab:rv_data} are already scaled by this factor. The full log-likelihood function ($\mathcal{L}$) is then given by:
 
 \begin{align*}
 s_1 &= \sum_{t_m} \frac{(v_{1,m} - v_1(t_m) - \Delta v_1)^2 }{\sigma_{v_1}^2 + \sigma_J^2} + \ln{2\pi(\sigma_{v_1}^2 + \sigma_J^2)} \\
@@ -229,7 +229,7 @@ s_2 &= \sum_{t_m} \frac{(v_{2,m} - v_2(t_m)(1+\frac{K_1}{K_2}) - \Delta v_2)^2}{
 
 where $v_{1,2}(t) = v(T_0, P, e, K_{1,2}, \omega, t)$ is the velocity at time t given by the orbital elements $T_0, P, e, K$, and $\omega$.
 
-We use the affine invariant sampler provided in the emcee code \citep{emcee} to perform a Markov Chain Monte Carlo (MCMC) fit to all of the parameters described above. We use flat priors in all variables except for the RV jitter and companion rv uncertainty scale factors ($\sigma_J$ and $f$, respectively), for which we use log-uniform priors to allow for a large range of values.  We give the median value and uncertainty for each parameter in Table \ref{tab:orbit}. The uncertainties are estimated from the posterior probability distribution samples such that the lower and upper bounds give the 16th and 84th percentile (i.e. they are $1\sigma$ credibility intervals). We plot the best-fit orbit with the data in Figure \ref{fig:orbit}, with the uncertainties on the companion velocities scaled and the velocities shifted by $\Delta v_1$ and $\Delta v_2$. We show the posterior probability distributions for the orbital parameters in Figure \ref{fig:orbit_dist} and for the data shifting and scaling parameters ($\Delta v_1$, $\Delta v_2$, and the uncertainty scaling) in Figure \ref{fig:datamanip_dist}.
+We use the affine invariant sampler provided in the emcee code \citep{emcee} to perform a Markov Chain Monte Carlo (MCMC) fit to all of the parameters described above. We use flat priors in all variables except for the RV jitter and companion rv uncertainty scale factors ($\sigma_J$ and $f$, respectively), for which we use log-uniform priors to allow for a large range of values.  We give the median value and uncertainty for each parameter in Table \ref{tab:orbit}. The uncertainties are estimated from the posterior probability distribution samples such that the lower and upper bounds give the 16th and 84th percentile (i.e. they are $1\sigma$ credibility intervals). We plot the best-fit orbit with the data in Figure \ref{fig:orbit}, with the uncertainties on the companion velocities scaled and the velocities shifted by $\Delta v_1$ and $\Delta v_2$. 
 
 Next, we calculate a series of derived quantities to characterize the companion and report them in Table \ref{tab:orbit}. The mass ratio of the system is the ratio $K1/K2 = 0.47$. We estimate the primary star mass by interpolating Dartmouth isochrones \citep{Dotter2008} with the `isochrones' code \citep[described in][]{Montet2015}, and using spectroscopic parameters derived in Brugameyer et al (2015). The secondary mass is $M_2 = qM_1 \sim 0.70 M_{\odot}$; assuming the same age and metallicity as the primary, the Dartmouth isochrones give an expected temperature of $\sim 4400 $ K. This temperature is in excellent agreement with the high contrast imaging data, which supports a companion of $\sim 4400$ K with large uncertainties. With both the primary and secondary star mass, we calculate the orbital inclination and semimajor axis and report them in Table \ref{tab:orbit}.
 
@@ -291,7 +291,7 @@ a (AU) & $9.1^{+0.4}_{-0.3}$ \\
 
 We use nearly 15 years of time-series spectra of the star $\psi^1$ Draconis A to search for the spectral lines of a companion identified by a large amplitude trend in the primary star radial velocities and later by direct imaging. We cross-correlate each spectrum against a Phoenix model spectrum of an $4400$ K star and subtract the average CCF. The residual CCFs clearly show the template match with the companion (Figure \ref{fig:resids}), and we are able to measure the companion radial velocities for most dates. 
 
-We use the radial velocity measurements for both the primary and secondary stars to find an orbital solution to the now double-lined spectroscopic binary. The summary values and posterior probability distributions of the fitted parameters are given in Table \ref{tab:orbit} and Figures \ref{fig:orbit_dist} and \ref{fig:datamanip_dist}. Finally, we report the mass and expected temperature of the companion as well as the orbital inclination and semi-major axis. The temperature agrees well with high contrast imaging, validating our method.
+We use the radial velocity measurements for both the primary and secondary stars to find an orbital solution to the now double-lined spectroscopic binary. The summary values of the fitted parameters are given in Table \ref{tab:orbit}. Finally, we report the mass and expected temperature of the companion as well as the orbital inclination and semi-major axis. The temperature agrees well with high contrast imaging, validating our method.
 
 The $\psi^1$ Draconis system is therefore a hierarchical multiple system with the component parameters given in Table \ref{tab:orbit}. $\psi^1$ Dra A and B are separated by $\sim 680$ AU and have a mass-ratio $q = 0.82$, while A and C (the new companion) have a much closer orbit with with $a = 9.1$ AU and $q = 0.47$. 
 
@@ -300,22 +300,6 @@ This method could be used to search for the spectral lines of stellar companions
 This research has made use of the SIMBAD database, operated at CDS, Strasbourg, France, and of Astropy, a community-developed core Python package for Astronomy (Astropy Collaboration, 2013).
 It was supported by a start-up grant to Adam Kraus from the University of Texas.
 
-
-
-\begin{figure}
-  \centering
-  \includegraphics[width=\columnwidth]{Distributions_1.pdf}
-  \caption{MCMC samples from the posterior distributions for the orbital parameters.}
-  \label{fig:orbit_dist}
-\end{figure}
-
-
-\begin{figure}
-  \centering
-  \includegraphics[width=\columnwidth]{Distributions_2.pdf}
-  \caption{MCMC samples from the posterior distributions for the data shift and scaling parameters.}
-  \label{fig:datamanip_dist}
-\end{figure}
 
 
 \newpage
