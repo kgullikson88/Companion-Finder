@@ -1,118 +1,146 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.7.8)  22 OCT 2015 15:02
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2009.11.7)  30 OCT 2015 13:17
 entering extended mode
+ \write18 enabled.
  %&-line parsing enabled.
 **ms.tex
 (./ms.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
-yphenation, loaded.
-(/usr/share/texmf-texlive/tex/latex/emulateapj/emulateapj.cls
+yphenation, german-x-2009-06-19, ngerman-x-2009-06-19, ancientgreek, ibycus, ar
+abic, basque, bulgarian, catalan, pinyin, coptic, croatian, czech, danish, dutc
+h, esperanto, estonian, farsi, finnish, french, galician, german, ngerman, mono
+greek, greek, hungarian, icelandic, indonesian, interlingua, irish, italian, ku
+rmanji, latin, latvian, lithuanian, mongolian, mongolian2a, bokmal, nynorsk, po
+lish, portuguese, romanian, russian, sanskrit, serbian, slovak, slovenian, span
+ish, swedish, turkish, ukenglish, ukrainian, uppersorbian, welsh, loaded.
+(/usr/local/texlive/2009/texmf-dist/tex/latex/emulateapj/emulateapj.cls
 Document Class: emulateapj 
 \bibbaselineskip=\skip41
-(/usr/share/texmf-texlive/tex/latex/revtex4/revtex4.cls
-Document Class: revtex4 2001/08/02 v4.0 (http://publish.aps.org/revtex4/ for do
-cumentation)
- Copyright (c) 2001 The American Physical Society.
+(/usr/local/texlive/2009/texmf-dist/tex/latex/revtex/revtex4-1.cls
+Document Class: revtex4-1 2009/10/08:11:23 4.1g (http://publish.aps.org/revtex4
+/ for documentation)
+ Copyright (c) 2009 The American Physical Society.
  mailto:revtex@aps.org
  Licensed under the LPPL:
 http://www.ctan.org/tex-archive/macros/latex/base/lppl.txt
- Arthur Ogawa <ogawa@teleport.com>
- Based on work by David Carlisle <david@dcarlisle.demon.co.uk>.
-ltxutil: portions licensed from W. E. Baxter (web@superscript.com)
-Class revtex4 Info: Repairing broken LateX \@sect on input line 596.
+ Arthur Ogawa <arthur_ogawa at sbcglobal dot net>
+ Based on work by David Carlisle <david at dcarlisle.demon.co.uk>.
+ltxutil [2009/07/07 4.1f]: portions licensed from W. E. Baxter (web at superscr
+ipt.com)
+LaTeX Info: Redefining \@centercr on input line 298.
+Class revtex4-1 Info: Repairing broken LaTeX eqnarray on input line 348.
+\eqncolsep=\skip42
+Class revtex4-1 Info: Repairing hyperref-unfriendly LaTeX definition of \mpfoot
+note on input line 423.
+Class revtex4-1 Info: Repairing broken LateX \@sect on input line 754.
 \intertabularlinepenalty=\count79
 \@tbpen=\count80
 \@arstrutbox@hline=\box26
-Class revtex4 Info: Repairing broken LaTeX \@xbitor on input line 1610.
-ltxgrid: portions licensed from W. E. Baxter (web@superscript.com)
-\c@linecount=\count81
-\output=\toks14
-\@protection@box=\box27
+Class revtex4-1 Info: Repairing broken LaTeX \@xbitor on input line 1785.
+Class revtex4-1 Info: Making \typeout \long on input line 1953.
+ltxfront [2009/10/06/20:20 4.1g]: Arthur Ogawa (after David P. Carlisle)
+\c@affil=\count81
+\c@collab=\count82
+\absbox=\box27
+ltxgrid [2009/07/07 4.1f]: portions licensed from W. E. Baxter (web at superscr
+ipt.com)
+\c@linecount=\count83
+\output@latex=\toks14
+\box@size@1=\box28
+\box@size@2=\box29
+\@protection@box=\box30
 \@topmark@saved=\toks15
-\footins@saved=\box28
-\pagesofar=\box29
-\footbox=\box30
-\pagegrid@col=\count82
-Class revtex4 Info: Incorporating package {textcase}  [1998/11/12 v0.06 Text on
-ly upper/lower case changing (DPC)]. on input line 3682.
-(/usr/share/texmf-texlive/tex/latex/ltxmisc/url.sty
+\footins@saved=\box31
+\pagesofar=\box32
+\footsofar=\box33
+\pagegrid@col=\count84
+Class revtex4-1 Info: Overriding \@vspace, \@vspacer, \@no@pgbk, \@newline, and
+ \\  on input line 5346.
+\c@part=\count85
+\c@section=\count86
+\c@subsection=\count87
+\c@subsubsection=\count88
+\c@paragraph=\count89
+\c@subparagraph=\count90
+\abovecaptionskip=\skip43
+\belowcaptionskip=\skip44
+\c@figure=\count91
+\fbox@1=\box34
+\c@table=\count92
+\fbox@2=\box35
+\c@video=\count93
+\fbox@4=\box36
+\@bibdataout=\write3
+\widetext@top=\box37
+\widetext@bot=\box38
+Class revtex4-1 Info: Selecting society aps on input line 7230.
+(/usr/local/texlive/2009/texmf-dist/tex/latex/revtex/aps4-1.rtx
+File: aps4-1 2009/10/08:11:23 4.1g (http://publish.aps.org/revtex4/ for documen
+tation)
+Class revtex4-1 Info: RevTeX society APS selected on input line 31.
+)
+Class revtex4-1 Info: Selecting journal pra on input line 7232.
+Class revtex4-1 Info: APS journal PRA selected on input line 7233.
+
+(/usr/local/texlive/2009/texmf-dist/tex/latex/revtex/aps10pt4-1.rtx
+File: aps10pt4-1 2009/10/08:11:23 4.1g (http://publish.aps.org/revtex4/ for doc
+umentation)
+Class revtex4-1 Info: RevTeX pointsize 10pt selected on input line 30.
+)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/textcase/textcase.sty
+Package: textcase 2004/10/07 v0.07 Text only upper/lower case changing (DPC)
+)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/ltxmisc/url.sty
 \Urlmuskip=\muskip10
 Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
-\c@affil=\count83
-\absbox=\box31
-\c@part=\count84
-\c@section=\count85
-\c@subsection=\count86
-\c@subsubsection=\count87
-\c@paragraph=\count88
-\c@subparagraph=\count89
-\abovecaptionskip=\skip42
-\belowcaptionskip=\skip43
-\c@figure=\count90
-\c@table=\count91
-
-(/usr/share/texmf-texlive/tex/latex/natbib/natbib.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2009/07/16 8.31 (PWD, AO)
-\bibhang=\skip44
-\bibsep=\skip45
+\bibhang=\skip45
+\bibsep=\skip46
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count92
+\c@NAT@ctr=\count94
 )
-\widetext@top=\box32
-\widetext@bot=\box33
-
-(/usr/share/texmf-texlive/tex/latex/revtex4/revsymb.sty
-Package: revsymb 2001/08/02 v4.0 (http://publish.aps.org/revtex4/ for documenta
-tion)
-LaTeX Info: Redefining \REV@mathfrak on input line 118.
+(/usr/local/texlive/2009/texmf-dist/tex/latex/revtex/revsymb4-1.sty
+Package: revsymb4-1 2009/10/08:11:23 4.1g (http://publish.aps.org/revtex4/ for 
+documentation)
+LaTeX Info: Redefining \REV@mathfrak on input line 119.
 ))
-
-Class revtex4 Warning: No Society specified, using generic APS style.
-
-(/usr/share/texmf-texlive/tex/latex/revtex4/aps.rtx
-File: aps.rtx 2001/08/02 v4.0 (http://publish.aps.org/revtex4/ for documentatio
-n)
-)
-(/usr/share/texmf-texlive/tex/latex/revtex4/10pt.rtx
-File: 10pt.rtx 2001/08/02 v4.0 (http://publish.aps.org/revtex4/ for documentati
-on)
-)
-(/usr/share/texmf-texlive/tex/latex/base/latexsym.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/latexsym.sty
 Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
 \symlasy=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
 (Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
 )
-(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks16
 )
-(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(/etc/texmf/tex/latex/config/graphics.cfg
+(/usr/local/texlive/2009/texmf-dist/tex/latex/latexconfig/graphics.cfg
 File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
-\Gread@gobject=\count93
+(/usr/local/texlive/2009/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2009/08/25 v0.04m Graphics/color for pdfTeX
+\Gread@gobject=\count95
 ))
 \Gin@req@height=\dimen102
 \Gin@req@width=\dimen103
 )
-(/usr/share/texmf-texlive/tex/latex/amsfonts/amssymb.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2009/06/22 v3.00
 
-(/usr/share/texmf-texlive/tex/latex/amsfonts/amsfonts.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
 \@emptytoks=\toks17
 \symAMSa=\mathgroup5
@@ -122,25 +150,25 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 LaTeX Info: Redefining \frak on input line 99.
 LaTeX Info: Redefining \Bbb on input line 101.
 ))
-(/usr/share/texmf-texlive/tex/latex/tools/longtable.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/tools/longtable.sty
 Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
-\LTleft=\skip46
-\LTright=\skip47
-\LTpre=\skip48
-\LTpost=\skip49
-\LTchunksize=\count94
+\LTleft=\skip47
+\LTright=\skip48
+\LTpre=\skip49
+\LTpost=\skip50
+\LTchunksize=\count96
 \LTcapwidth=\dimen104
-\LT@head=\box34
-\LT@firsthead=\box35
-\LT@foot=\box36
-\LT@lastfoot=\box37
-\LT@cols=\count95
-\LT@rows=\count96
-\c@LT@tables=\count97
-\c@LT@chunks=\count98
+\LT@head=\box39
+\LT@firsthead=\box40
+\LT@foot=\box41
+\LT@lastfoot=\box42
+\LT@cols=\count97
+\LT@rows=\count98
+\c@LT@tables=\count99
+\c@LT@chunks=\count100
 \LT@p@ftn=\toks18
 )
-(/usr/share/texmf-texlive/tex/generic/epsf/epsf.sty
+(/usr/local/texlive/2009/texmf-dist/tex/generic/epsf/epsf.sty
 This is `epsf.tex' v2.7.3 <23 July 2005>
 \epsffilein=\read1
 \epsfframemargin=\dimen105
@@ -152,109 +180,120 @@ This is `epsf.tex' v2.7.3 <23 July 2005>
 \epsfysize=\dimen111
 \pspoints=\dimen112
 )
-\c@front@matter@foot@note=\count99
+\c@front@matter@foot@note=\count101
 \alt@affil@toks=\toks19
 \alt@affil@toks@count=\toks20
-\keys@width=\skip50
-\c@lastfootnote=\count100
-\c@remember@figure@num=\count101
-\c@remember@table@num=\count102
+\keys@width=\skip51
+\c@lastfootnote=\count102
+\c@remember@figure@num=\count103
+\c@remember@table@num=\count104
 \bibindent=\dimen113
-\plot@width=\skip51
-\c@table@save=\count103
-\table@note@skip=\skip52
-\deluxe@table@width=\skip53
-\@d@t@a=\skip54
-\c@deluxe@table@num=\count104
-\abovedeluxetableskip=\skip55
-\belowdeluxetableskip=\skip56
+\plot@width=\skip52
+\c@table@save=\count105
+\table@note@skip=\skip53
+\deluxe@table@width=\skip54
+\@d@t@a=\skip55
+\c@deluxe@table@num=\count106
+\abovedeluxetableskip=\skip56
+\belowdeluxetableskip=\skip57
+\lastrowheight=\dimen114
 \DT@p@ftn=\toks21
-\pt@column=\count105
-\pt@ncol=\count106
-) (/usr/share/texmf-texlive/tex/latex/subfigure/subfigure.sty
+\pt@column=\count107
+\pt@ncol=\count108
+) (/usr/local/texlive/2009/texmf-dist/tex/latex/subfigure/subfigure.sty
 Package: subfigure 2002/03/15 v2.1.5 subfigure package
-\subfigtopskip=\skip57
-\subfigcapskip=\skip58
-\subfigcaptopadj=\dimen114
-\subfigbottomskip=\skip59
-\subfigcapmargin=\dimen115
-\subfiglabelskip=\skip60
-\c@subfigure=\count107
-\c@lofdepth=\count108
-\c@subtable=\count109
-\c@lotdepth=\count110
+\subfigtopskip=\skip58
+\subfigcapskip=\skip59
+\subfigcaptopadj=\dimen115
+\subfigbottomskip=\skip60
+\subfigcapmargin=\dimen116
+\subfiglabelskip=\skip61
+\c@subfigure=\count109
+\c@lofdepth=\count110
+\c@subtable=\count111
+\c@lotdepth=\count112
 
 ****************************************
 * Local config file subfigure.cfg used *
 ****************************************
-(/usr/share/texmf-texlive/tex/latex/subfigure/subfigure.cfg)
-\subfig@top=\skip61
-\subfig@bottom=\skip62
+(/usr/local/texlive/2009/texmf-dist/tex/latex/subfigure/subfigure.cfg)
+\subfig@top=\skip62
+\subfig@bottom=\skip63
 )
-(/usr/share/texmf-texlive/tex/latex/tools/verbatim.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
 \every@verbatim=\toks22
 \verbatim@line=\toks23
 \verbatim@in@stream=\read2
 )
-(/usr/share/texmf-texlive/tex/latex/amsmath/amsmath.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2000/07/18 v2.13 AMS math features
-\@mathmargin=\skip63
+\@mathmargin=\skip64
 
 For additional information on amsmath, use the `?' option.
-(/usr/share/texmf-texlive/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01
 
-(/usr/share/texmf-texlive/tex/latex/amsmath/amsgen.sty
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks24
-\ex@=\dimen116
-))
-(/usr/share/texmf-texlive/tex/latex/amsmath/amsbsy.sty
-Package: amsbsy 1999/11/29 v1.2d
-\pmbraise@=\dimen117
+\ex@=\dimen117
 )
-(/usr/share/texmf-texlive/tex/latex/amsmath/amsopn.sty
+LaTeX Info: Redefining \text on input line 53.
+)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen118
+)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
-\inf@bad=\count111
+\inf@bad=\count113
 LaTeX Info: Redefining \frac on input line 211.
-\uproot@=\count112
-\leftroot@=\count113
+\uproot@=\count114
+\leftroot@=\count115
 LaTeX Info: Redefining \overline on input line 307.
-\classnum@=\count114
-\DOTSCASE@=\count115
+\classnum@=\count116
+\DOTSCASE@=\count117
 LaTeX Info: Redefining \ldots on input line 379.
 LaTeX Info: Redefining \dots on input line 382.
 LaTeX Info: Redefining \cdots on input line 467.
-\Mathstrutbox@=\box38
-\strutbox@=\box39
-\big@size=\dimen118
+\Mathstrutbox@=\box43
+\strutbox@=\box44
+\big@size=\dimen119
 LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
-\macc@depth=\count116
-\c@MaxMatrixCols=\count117
+\macc@depth=\count118
+\c@MaxMatrixCols=\count119
 \dotsspace@=\muskip11
-\c@parentequation=\count118
-\dspbrk@lvl=\count119
+\c@parentequation=\count120
+\dspbrk@lvl=\count121
 \tag@help=\toks25
-\row@=\count120
-\column@=\count121
-\maxfields@=\count122
+\row@=\count122
+\column@=\count123
+\maxfields@=\count124
 \andhelp@=\toks26
-\eqnshift@=\dimen119
-\alignsep@=\dimen120
-\tagshift@=\dimen121
-\tagwidth@=\dimen122
-\totwidth@=\dimen123
-\lineht@=\dimen124
+\eqnshift@=\dimen120
+\alignsep@=\dimen121
+\tagshift@=\dimen122
+\tagwidth@=\dimen123
+\totwidth@=\dimen124
+\lineht@=\dimen125
 \@envbody=\toks27
-\multlinegap=\skip64
-\multlinetaggap=\skip65
+\multlinegap=\skip65
+\multlinetaggap=\skip66
 \mathdisplay@stack=\toks28
 LaTeX Info: Redefining \[ on input line 2666.
 LaTeX Info: Redefining \] on input line 2667.
-) (./ms.aux)
+)
+Class revtex4-1 Info: Patching LaTeX tabular. on input line 13.
+Class revtex4-1 Info: Patching longtable package on input line 13.
+Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 13.
+
+Class revtex4-1 Info: cite was not loaded (OK!) on input line 13.
+Class revtex4-1 Info: mcite was not loaded (OK!) on input line 13.
+Class revtex4-1 Info: multicol was not loaded (OK!) on input line 13.
+ (./ms.aux)
 \openout1 = `ms.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
@@ -269,103 +308,61 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
 LaTeX Font Info:    ... okay on input line 13.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
 LaTeX Font Info:    ... okay on input line 13.
-Class revtex4 Info: Patching LaTeX tabular. on input line 13.
-Class revtex4 Info: Patching unrecognized longtable package. (Proceeding with f
-ingers crossed) on input line 13.
-Class revtex4 Info: cite was not loaded (OK!) on input line 13.
-Class revtex4 Info: multicol was not loaded (OK!) on input line 13.
 
-(/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
+(/usr/local/texlive/2009/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count123
-\scratchdimen=\dimen125
-\scratchbox=\box40
-\nofMPsegments=\count124
-\nofMParguments=\count125
+\scratchcounter=\count125
+\scratchdimen=\dimen126
+\scratchbox=\box45
+\nofMPsegments=\count126
+\nofMParguments=\count127
 \everyMPshowfont=\toks29
-\MPscratchCnt=\count126
-\MPscratchDim=\dimen126
-\MPnumerator=\count127
+\MPscratchCnt=\count128
+\MPscratchDim=\dimen127
+\MPnumerator=\count129
 \everyMPtoPDFconversion=\toks30
 )
+\openout3 = `msNotes.bib'.
+
 LaTeX Font Info:    Try loading font information for U+lasy on input line 27.
- (/usr/share/texmf-texlive/tex/latex/base/ulasy.fd
+ (/usr/local/texlive/2009/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
 LaTeX Font Info:    Try loading font information for U+msa on input line 27.
 
-(/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 27.
 
-(/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
 
-Class revtex4 Warning: Assuming \noaffiliation for Kevin Gullikson \textsupersc
-ript {1}Michael Endl \textsuperscript {1}William D. Cochran \textsuperscript {1
-}Phillip J. MacQueen \textsuperscript {1}.
+Class revtex4-1 Warning: Assuming \noaffiliation for Kevin Gullikson \textsuper
+script {1}Michael Endl \textsuperscript {1}William D. Cochran \textsuperscript 
+{1}Phillip J. MacQueen \textsuperscript {1}.
 
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-
-Package longtable Warning: Column widths have changed
-(longtable)                in table 1 on input line 105.
-
-
-Package longtable Warning: Column widths have changed
-(longtable)                in table 1 on input line 161.
-
+[1{/usr/local/texlive/2009/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 174.
 
-(/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
+
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 174.
  [2]
-<Resid_CCFs.pdf, id=23, 433.62pt x 289.08pt>
+<Resid_CCFs.pdf, id=24, 433.62pt x 289.08pt>
 File: Resid_CCFs.pdf Graphic file (type pdf)
  <use Resid_CCFs.pdf>
-Underfull \hbox (badness 10000) in paragraph at lines 188--188
-$[]$
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 188--188
-
- []
-
-<Typical_CCF.pdf, id=25, 462.52798pt x 317.98799pt>
+<Typical_CCF.pdf, id=26, 462.52798pt x 317.98799pt>
 File: Typical_CCF.pdf Graphic file (type pdf)
  <use Typical_CCF.pdf>
-Underfull \hbox (badness 10000) in paragraph at lines 197--197
-$[]$
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 197--197
-
- []
-
 [3 <./Resid_CCFs.pdf> <./Typical_CCF.pdf>]
-
-Package longtable Warning: Column widths have changed
-(longtable)                in table 1 on input line 273.
-
-<SB2_Orbit.pdf, id=108, 462.52798pt x 317.98799pt>
+<SB2_Orbit.pdf, id=109, 462.52798pt x 317.98799pt>
 File: SB2_Orbit.pdf Graphic file (type pdf)
  <use SB2_Orbit.pdf>
-Underfull \hbox (badness 10000) in paragraph at lines 281--281
-$[]$
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 281--281
-
- []
-
-
 Underfull \hbox (badness 3148) in paragraph at lines 296--297
 []\OT1/cmr/m/n/10 This method could be used to search for the
  []
@@ -390,50 +387,38 @@ Underfull \hbox (badness 2582) in paragraph at lines 296--297
 \OT1/cmr/m/n/10 and gen-er-at-ing the plots for this pa-per avail-able
  []
 
-(./ms.bbl [4 <./SB2_Orbit.pdf>]
-Underfull \hbox (badness 3009) in paragraph at lines 32--37
- \OT1/cmr/m/n/8 Robert-son, P., Meschiari, S., Ramirez, I., Shetrone, M.,
- []
-
-
-Underfull \hbox (badness 1454) in paragraph at lines 113--116
- []\OT1/cmr/m/n/8 Pepe, F., Lo-vis, C., S^^Segransan, D., Benz, W., Bouchy, F.,
-
- []
-
-)
-
-Package longtable Warning: Table widths have changed. Rerun LaTeX.
-
-[5] (./ms.aux) ) 
+(./ms.bbl [4 <./SB2_Orbit.pdf>]) [5] (./ms.aux) ) 
 Here is how much of TeX's memory you used:
- 4138 strings out of 495061
- 50841 string characters out of 1182622
- 150599 words of memory out of 3000000
- 7269 multiletter control sequences out of 15000+50000
+ 4564 strings out of 493848
+ 57871 string characters out of 3149207
+ 162968 words of memory out of 3000000
+ 7788 multiletter control sequences out of 15000+200000
  12221 words of font info for 51 fonts, out of 3000000 for 9000
- 28 hyphenation exceptions out of 8191
- 34i,12n,28p,1090b,440s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmcsc1
-0.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr
-/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texm
-f-texlive/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texmf-texlive/fo
-nts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-texlive/fonts/type1/pu
-blic/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
-s/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.p
-fb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/shar
-e/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-texli
-ve/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type
-1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsf
-onts/cm/cmr9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/
-share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-
-texlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/font
-s/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/type1/pub
-lic/amsfonts/cm/cmti8.pfb>
-Output written on ms.pdf (5 pages, 316085 bytes).
+ 714 hyphenation exceptions out of 8191
+ 34i,12n,29p,1090b,452s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/local/texlive/2009/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2009/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2009/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2009/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2009/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2009/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2009/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2009/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2009/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2009/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr8.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr9.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmsy6.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmsy7.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmsy8.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmti10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmti8.pfb>
+Output written on ms.pdf (5 pages, 313848 bytes).
 PDF statistics:
- 217 PDF objects out of 1000 (max. 8388607)
+ 218 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
